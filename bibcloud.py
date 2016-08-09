@@ -285,6 +285,22 @@ def escape_percent(s):
         return s
 
 
+def escape_percent_amp(s):
+    x = s.find("%")
+    y = s.find("&")
+
+    if x>=0 and (x<y or y<0):
+        s2 = s[:x] + "\%" + escape_percent_amp(s[x+1:])
+        print "ESCAPING%: ",s,s2
+        return s2
+    elif y>=0:
+        s2 = s[:y] + "\&" + escape_percent_amp(s[y+1:])
+        print "ESCAPING&: ",s,s2
+        return s2
+    else:
+        return s
+
+
 DOI_IN_DBLP = ["http://doi.acm.org/","http://doi.ieeecomputersociety.org/","http://dx.doi.org/"]
     
 
@@ -398,9 +414,9 @@ for c in dblp_citations:
                     F.write("  "+a.tag+" = {"+html_to_bibtex(a.text)+"},\n")
                 elif fieldlist[a.tag] == 'double':
                     if a.tag == "title" and TITLESUB.has_key(a.text):
-                        F.write("  "+a.tag+" = {{"+escape_percent(TITLESUB[a.text])+"}},\n")
+                        F.write("  "+a.tag+" = {{"+escape_percent_amp(TITLESUB[a.text])+"}},\n")
                     else:
-                        F.write("  "+a.tag+" = {{"+escape_percent(a.text)+"}},\n")
+                        F.write("  "+a.tag+" = {{"+escape_percent_amp(a.text)+"}},\n")
                 elif fieldlist[a.tag] == 'ee':
                     if processedEE == 0:
                         F.write(output_doi_ee(a.text))
