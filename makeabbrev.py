@@ -66,7 +66,8 @@ CONF = {
     'sensys'    : ['o', "Proceedings of the OCCURENCE International Conference on Embedded Networked Sensor Systems (Sensys)"],
     'lisa'      : ['o', "Proceedings of the OCCURENCE Large Installation System Administration Conference (LISA)"],
     'pact'      : ['o', "Proceedings of the OCCURENCE International Conference on Parallel Architecture and Compilation Techniques (PACT)"],
-    'sigcse'    : ['o', "Proceedings of the OCCURENCE SIGCSE Technical Symposium on Computer Science Education (SIGCSE)"]
+    'sigcse'    : ['o', "Proceedings of the OCCURENCE SIGCSE Technical Symposium on Computer Science Education (SIGCSE)"],
+    'ispass'    : ['y', "Proceedings of the YEAR IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS)"]
 }
 
 SHORTCONF = {
@@ -150,6 +151,12 @@ def annual_occ(k,first_occ,first_y,end_y):
         occ = occ +1
     
 
+def annual_year(k,first_y,end_y):
+    for y in range(first_y,end_y):
+        F.write(make_sigcomm(k,y))
+    
+
+    
 ###################################################
 # main
 ###################################################
@@ -305,6 +312,8 @@ annual_occ("sensys",1,2003,2016)
 annual_occ("lisa",10,1996,2016)
 annual_occ("pact",6,1997,2018)
 annual_occ("sigcse",36,2005,2006)
+
+annual_year("ispass",2000,2017)
 
 
 F.close()

@@ -118,6 +118,13 @@ I recommend the following:
 .bibcloud
 ```
  
- that's all, folks.
+## License
+
+bibcloud is available under a BSD-style license (see bibcloud.py)
+
+(c)  EPFL
+ 
+
+that's all, folks.
  
  
