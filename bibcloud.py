@@ -69,6 +69,8 @@ import locale
 
 DEBUG = 0
 
+gBibStyle = ""
+
 LOCALFILES = {'cache'   :'.bibcloud/DBLP.xml',
               'alias'   :'dblp-alias.txt',
               'titlefix':'dblp-title.txt'}
@@ -140,12 +142,25 @@ def find_citation(l):
 
 def load_references(bibname):
     
+    global gBibStyle
+
     if (not os.path.isfile(bibname)):
         print "FATAL -- File "+bibname+" does not exist"
         sys.exit(1)
 
     print "bibcloud: parsing ",bibname
     lines = [line.strip() for line in open(bibname)]
+
+    BibSyle = ""
+    bibstyleline = [x for x in lines if x.find("\\bibstyle")>=0]
+    print "BIBSTYLE is ",bibstyleline
+    if len(bibstyleline)==1:
+        x = bibstyleline[0].split("{")
+        x = x[1].split("}")
+        gBibStyle = x[0]
+        print "BIBSTYLE (stipped)",gBibStyle
+
+
     lines =  [find_citation(line) for line in lines]
     lines  = [c.strip(" ") for c in lines if c != ""]
     lines =  [c.split(",") for c in lines]
@@ -404,7 +419,10 @@ for c in dblp_citations:
         authorlist = [a.text for a in xml if a.tag=="author"]
         authorlist = [html_to_bibtex(a) for a in authorlist]
         authorlist = [author_trim(a) for a in authorlist]
-        processedEE = 0
+        if gBibStyle == "abbrvnat":
+            processedEE = 1
+        else:
+            processedEE = 0
 
         F.write("\n@"+xml.tag+"{"+latex_backmap[c]+",\n")
         F.write("  author = {"+  " and ".join(authorlist) + "},\n")
