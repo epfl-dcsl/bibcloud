@@ -112,6 +112,7 @@ NOACKCONFERENCE = {
     "USENIX Summer" : "USENIX Summer",
     "USENIX Annual Technical Conference, FREENIX Track" : "USENIX Annual Technical Conference, FREENIX Track",
     "Internet Measurement Conference" : "IMC",
+    "Internet Measurement Comference" : "IMC",
     "Internet Measurement Workshop" : "IMC",
     "USENIX Security Symposium" : "USS",
     "ACM SIGOPS European Workshop" : "ACM SIGOPS European Workshop"
