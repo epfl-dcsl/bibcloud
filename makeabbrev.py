@@ -68,7 +68,8 @@ CONF = {
     'pact'      : ['o', "Proceedings of the OCCURENCE International Conference on Parallel Architecture and Compilation Techniques (PACT)"],
     'sigcse'    : ['o', "Proceedings of the OCCURENCE SIGCSE Technical Symposium on Computer Science Education (SIGCSE)"],
     'ispass'    : ['y', "Proceedings of the YEAR IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS)"],
-    'fpl'       : ['o', "Proceedings of the OCCURENCE International Conference on Field Programmable Logic and Applications (FPL)"]
+    'fpl'       : ['o', "Proceedings of the OCCURENCE International Conference on Field Programmable Logic and Applications (FPL)"],
+    "threepgcic" : ['o', "Proceedings of the OCCURENCE International Conference on P2P, Parallel, Grid, Cloud and Internet Computing (3PGCIC)"]
 }
 
 SHORTCONF = {
@@ -316,6 +317,7 @@ annual_occ("sigcse",36,2005,2006)
 
 annual_year("ispass",2000,2017)
 annual_occ("fpl",11,2001,2017)    #was a workshop earlier
+annual_occ("threepgcic",5,2010,2017)
 
 F.close()
 
