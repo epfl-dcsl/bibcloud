@@ -117,7 +117,8 @@ NOACKCONFERENCE = {
     "Internet Measurement Comference" : "IMC",
     "Internet Measurement Workshop" : "IMC",
     "USENIX Security Symposium" : "USS",
-    "ACM SIGOPS European Workshop" : "ACM SIGOPS European Workshop"
+    "ACM SIGOPS European Workshop" : "ACM SIGOPS European Workshop",
+    "3PGCIC" : "threePGCIC"
 }
 
 ############
@@ -446,7 +447,7 @@ for c in dblp_citations:
         if xml.tag == "inproceedings":        
             year = xml.find('year').text[2:]
             booktitle = xml.find('booktitle').text
-            if booktitle.find(" ")>0:
+            if booktitle.find(" ") >0 or booktitle == "3PGCIC":
                 if NOACKCONFERENCE.has_key(booktitle):
                     booktitle = NOACKCONFERENCE[booktitle]
                     if booktitle.find(" ")>0:
