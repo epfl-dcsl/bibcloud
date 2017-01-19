@@ -70,7 +70,8 @@ CONF = {
     'ispass'    : ['y', "Proceedings of the YEAR IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS)"],
     'fpl'       : ['o', "Proceedings of the OCCURENCE International Conference on Field Programmable Logic and Applications (FPL)"],
     "threepgcic" : ['o', "Proceedings of the OCCURENCE International Conference on P2P, Parallel, Grid, Cloud and Internet Computing (3PGCIC)"],
-    "mobicom"   : ['o', "Proceedings of the OCCURENCE Annual International Conference on Mobile Computing and Networking (MobiCom)"]
+    "mobicom"   : ['o', "Proceedings of the OCCURENCE Annual International Conference on Mobile Computing and Networking (MobiCom)"],
+    "bigdata" : ['y', "Proceedings of the YEAR IEEE Conference on Big Data"]
 }
 
 SHORTCONF = {
@@ -320,6 +321,8 @@ annual_year("ispass",2000,2017)
 annual_occ("fpl",11,2001,2017)    #was a workshop earlier
 annual_occ("threepgcic",5,2010,2017)
 annual_occ("mobicom",6,2000,2017)
+
+annual_year("bigdata",2012,2017)
 
 F.close()
 

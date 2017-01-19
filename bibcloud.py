@@ -118,7 +118,8 @@ NOACKCONFERENCE = {
     "Internet Measurement Workshop" : "IMC",
     "USENIX Security Symposium" : "USS",
     "ACM SIGOPS European Workshop" : "ACM SIGOPS European Workshop",
-    "3PGCIC" : "threePGCIC"
+    "3PGCIC" : "threePGCIC",
+    "Big Data" :"bigdata"
 }
 
 ############
