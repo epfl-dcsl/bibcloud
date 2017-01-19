@@ -71,7 +71,8 @@ CONF = {
     'fpl'       : ['o', "Proceedings of the OCCURENCE International Conference on Field Programmable Logic and Applications (FPL)"],
     "threepgcic" : ['o', "Proceedings of the OCCURENCE International Conference on P2P, Parallel, Grid, Cloud and Internet Computing (3PGCIC)"],
     "mobicom"   : ['o', "Proceedings of the OCCURENCE Annual International Conference on Mobile Computing and Networking (MobiCom)"],
-    "bigdata" : ['y', "Proceedings of the YEAR IEEE Conference on Big Data"]
+    "bigdata" : ['y', "Proceedings of the YEAR IEEE Conference on Big Data"],
+    "inflow"  : ['o', "Proceedings of the OCCURENCE Workshop on Interactions of NVM/FLASH with Operating Systems and Workload (INFLOW)"] 
 }
 
 SHORTCONF = {
@@ -193,14 +194,14 @@ for y in range(1993,2017):
     F.write(make_sigcomm("sigmetrics",y))
 
 
-for occ in range (1,30):
+for occ in range (1,32):
     y = 1967 + (occ-1)*2
     F.write(make_sosp("sosp",y,occ))
 
 
 F.write(make_sosp("osdi",1996,2))
 F.write(make_sosp("osdi",1999,3))
-for occ in range (4,12):
+for occ in range (4,14):
     y = 2000 + (occ-4)*2
     F.write(make_sosp("osdi",y,occ))
 
@@ -323,6 +324,7 @@ annual_occ("threepgcic",5,2010,2017)
 annual_occ("mobicom",6,2000,2017)
 
 annual_year("bigdata",2012,2017)
+annual_occ("inflow",1,2013,2017)
 
 F.close()
 
