@@ -72,7 +72,10 @@ CONF = {
     "threepgcic" : ['o', "Proceedings of the OCCURENCE International Conference on P2P, Parallel, Grid, Cloud and Internet Computing (3PGCIC)"],
     "mobicom"   : ['o', "Proceedings of the OCCURENCE Annual International Conference on Mobile Computing and Networking (MobiCom)"],
     "bigdata" : ['y', "Proceedings of the YEAR IEEE Conference on Big Data"],
-    "inflow"  : ['o', "Proceedings of the OCCURENCE Workshop on Interactions of NVM/FLASH with Operating Systems and Workload (INFLOW)"] 
+    "inflow"  : ['o', "Proceedings of the OCCURENCE Workshop on Interactions of NVM/FLASH with Operating Systems and Workload (INFLOW)"] ,
+    "ndss"    : ['y', "Proceedings of the YEAR Annual Network and Distributed System Security Symposium (NDSS)"],
+    "popl"    : ['o', "Proceedings of the OCCURENCE ACM SIGPLAN Symposium on Principles of Programming Languages (POPL)"],
+    "uss"     : ['o', "Proceedings of the OCCURENCE USENIX Security Symposium"]
 }
 
 SHORTCONF = {
@@ -325,7 +328,11 @@ annual_occ("mobicom",6,2000,2017)
 
 annual_year("bigdata",2012,2017)
 annual_occ("inflow",1,2013,2017)
+annual_year("ndss",1995,2017)
+annual_occ("popl",15,1988,2018)
 
+F.write(make_sosp("uss",1996,6))
+annual_occ("uss",7,1998,2018)
 F.close()
 
 
