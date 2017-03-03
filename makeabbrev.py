@@ -76,7 +76,8 @@ CONF = {
     "ndss"    : ['y', "Proceedings of the YEAR Annual Network and Distributed System Security Symposium (NDSS)"],
     "popl"    : ['o', "Proceedings of the OCCURENCE ACM SIGPLAN Symposium on Principles of Programming Languages (POPL)"],
     "uss"     : ['o', "Proceedings of the OCCURENCE USENIX Security Symposium"],
-    "stoc"    : ['o', "Proceedings of the OCCURENCE ACM Symposium on the Theory of Computing (STOC)"]
+    "stoc"    : ['o', "Proceedings of the OCCURENCE ACM Symposium on the Theory of Computing (STOC)"],
+    "www"    : ['o', "Proceedings of the OCCURENCE International Conference on World Wide Web (WWW)"]
 }
 
 SHORTCONF = {
@@ -335,7 +336,9 @@ annual_occ("popl",15,1988,2018)
 F.write(make_sosp("uss",1996,6))
 annual_occ("uss",7,1998,2018)
 
-annual_occ("stoc",1,1969,2017)
+annual_occ("stoc",1,1969,2018)
+
+annual_occ("www",1,1994,2018)
 F.close()
 
 
