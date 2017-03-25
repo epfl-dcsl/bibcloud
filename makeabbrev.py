@@ -77,7 +77,9 @@ CONF = {
     "popl"    : ['o', "Proceedings of the OCCURENCE ACM SIGPLAN Symposium on Principles of Programming Languages (POPL)"],
     "uss"     : ['o', "Proceedings of the OCCURENCE USENIX Security Symposium"],
     "stoc"    : ['o', "Proceedings of the OCCURENCE ACM Symposium on the Theory of Computing (STOC)"],
-    "www"    : ['o', "Proceedings of the OCCURENCE International Conference on World Wide Web (WWW)"]
+    "www"     : ['o', "Proceedings of the OCCURENCE International Conference on World Wide Web (WWW)"],
+    "icdcs"   : ['o', "Proceedings of the OCCURENCE IEEE International Conference on Distributed Computing Systems (ICDCS)"]
+    
 }
 
 SHORTCONF = {
@@ -339,6 +341,8 @@ annual_occ("uss",7,1998,2018)
 annual_occ("stoc",1,1969,2018)
 
 annual_occ("www",1,1994,2018)
+annual_occ("icdcs",20,2000,2018)
+
 F.close()
 
 
