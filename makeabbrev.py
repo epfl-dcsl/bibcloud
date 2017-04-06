@@ -78,7 +78,9 @@ CONF = {
     "uss"     : ['o', "Proceedings of the OCCURENCE USENIX Security Symposium"],
     "stoc"    : ['o', "Proceedings of the OCCURENCE ACM Symposium on the Theory of Computing (STOC)"],
     "www"     : ['o', "Proceedings of the OCCURENCE International Conference on World Wide Web (WWW)"],
-    "icdcs"   : ['o', "Proceedings of the OCCURENCE IEEE International Conference on Distributed Computing Systems (ICDCS)"]
+    "icdcs"   : ['o', "Proceedings of the OCCURENCE IEEE International Conference on Distributed Computing Systems (ICDCS)"],
+    "iiswc"   : ['y', "Proceedings of the YEAR IEEE International Symposium on Workload Characterization (IISWC)"],
+    "spaa"    : ['o', "Proceedings of the OCCURENCE ACM Symposium on Parallelism in Algorithms and Architectures (SPAA)"]
     
 }
 
@@ -214,7 +216,7 @@ for occ in range (4,14):
 
 
 annual_occ("isca",17,1990,2017)
-annual_occ("nsdi",1,2004,2016)
+annual_occ("nsdi",1,2004,2018)
 
 
 for occ in range (5,13):
@@ -342,7 +344,8 @@ annual_occ("stoc",1,1969,2018)
 
 annual_occ("www",1,1994,2018)
 annual_occ("icdcs",20,2000,2018)
-
+annual_year("iiswc",2006,2018)
+annual_occ("spaa",12,2000,2018)
 F.close()
 
 
