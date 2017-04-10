@@ -80,7 +80,8 @@ CONF = {
     "www"     : ['o', "Proceedings of the OCCURENCE International Conference on World Wide Web (WWW)"],
     "icdcs"   : ['o', "Proceedings of the OCCURENCE IEEE International Conference on Distributed Computing Systems (ICDCS)"],
     "iiswc"   : ['y', "Proceedings of the YEAR IEEE International Symposium on Workload Characterization (IISWC)"],
-    "spaa"    : ['o', "Proceedings of the OCCURENCE ACM Symposium on Parallelism in Algorithms and Architectures (SPAA)"]
+    "spaa"    : ['o', "Proceedings of the OCCURENCE ACM Symposium on Parallelism in Algorithms and Architectures (SPAA)"],
+   "vldb"     : ['o', "Proceedings of the OCCURENCE International Conference on Very Large DataBases (VLDB)"]
     
 }
 
@@ -346,6 +347,7 @@ annual_occ("www",1,1994,2018)
 annual_occ("icdcs",20,2000,2018)
 annual_year("iiswc",2006,2018)
 annual_occ("spaa",12,2000,2018)
+annual_occ("vldb",26,2000,2008)
 F.close()
 
 
