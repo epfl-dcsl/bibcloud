@@ -238,7 +238,7 @@ for occ in range (6,14):
     F.write(make_asplos("hotnets",y,occ))
 
 
-for y in range (1993,2015):
+for y in range (1993,2018):
     F.write(make_sigcomm("sc",y))
 
 for occ in range (1,15):

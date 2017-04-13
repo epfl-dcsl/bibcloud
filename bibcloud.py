@@ -257,7 +257,9 @@ HTML_TO_BIB = {
     u"Ö" : "{\\\"O}",
     u"í" : "\\'{\\i}",
     u"ñ" : "\\~{n}",
-    u"å" : "{\\aa}"
+    u"å" : "{\\aa}",
+    u"\u2248" : "{$\\approx$}"
+
 }
  
 
@@ -278,6 +280,7 @@ def html_to_bibtex2(h):
     try:
         return str(h)
     except:
+        print "DEBUG: HTML conversion ",h.encode('utf-8')
         x = ""
         for c in h:
             c2 = c.encode('utf-8')
@@ -285,7 +288,7 @@ def html_to_bibtex2(h):
                 x = x + HTML_TO_BIB[c]
             else: 
                 x = x + c
-#        print "DEBUG: HTML conversion ",h.encode('utf-8')," --> ",x.encode('utf-8')
+        print "DEBUG: HTML conversion ",h.encode('utf-8')," --> ",x.encode('utf-8')
         return x.encode('utf-8')
     
 
@@ -439,7 +442,7 @@ for c in dblp_citations:
                     if a.tag == "title" and TITLESUB.has_key(a.text):
                         F.write("  "+a.tag+" = {{"+escape_percent_amp(TITLESUB[a.text])+"}},\n")
                     else:
-                        F.write("  "+a.tag+" = {{"+escape_percent_amp(a.text)+"}},\n")
+                        F.write("  "+a.tag+" = {{"+escape_percent_amp(html_to_bibtex(a.text))+"}},\n")
                 elif fieldlist[a.tag] == 'ee':
                     if processedEE == 0:
                         F.write(output_doi_ee(a.text))
