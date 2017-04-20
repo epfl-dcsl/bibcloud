@@ -81,7 +81,8 @@ CONF = {
     "icdcs"   : ['o', "Proceedings of the OCCURENCE IEEE International Conference on Distributed Computing Systems (ICDCS)"],
     "iiswc"   : ['y', "Proceedings of the YEAR IEEE International Symposium on Workload Characterization (IISWC)"],
     "spaa"    : ['o', "Proceedings of the OCCURENCE ACM Symposium on Parallelism in Algorithms and Architectures (SPAA)"],
-   "vldb"     : ['o', "Proceedings of the OCCURENCE International Conference on Very Large DataBases (VLDB)"]
+   "vldb"     : ['o', "Proceedings of the OCCURENCE International Conference on Very Large DataBases (VLDB)"],
+    "sigcse"  : ['o', "Proceedings of the OCCURENCE ACM Technical Symposium on Computer Science Education (SIGCSE)"] 
     
 }
 
@@ -348,6 +349,7 @@ annual_occ("icdcs",20,2000,2018)
 annual_year("iiswc",2006,2018)
 annual_occ("spaa",12,2000,2018)
 annual_occ("vldb",26,2000,2008)
+annual_occ("sigcse",42,2011,2012)
 F.close()
 
 
