@@ -81,9 +81,13 @@ CONF = {
     "icdcs"   : ['o', "Proceedings of the OCCURENCE IEEE International Conference on Distributed Computing Systems (ICDCS)"],
     "iiswc"   : ['y', "Proceedings of the YEAR IEEE International Symposium on Workload Characterization (IISWC)"],
     "spaa"    : ['o', "Proceedings of the OCCURENCE ACM Symposium on Parallelism in Algorithms and Architectures (SPAA)"],
-   "vldb"     : ['o', "Proceedings of the OCCURENCE International Conference on Very Large DataBases (VLDB)"],
-    "sigcse"  : ['o', "Proceedings of the OCCURENCE ACM Technical Symposium on Computer Science Education (SIGCSE)"] 
-    
+    "vldb"    : ['o', "Proceedings of the OCCURENCE International Conference on Very Large DataBases (VLDB)"],
+    "sigcse"  : ['o', "Proceedings of the OCCURENCE ACM Technical Symposium on Computer Science Education (SIGCSE)"],
+    "systor"  : ['o', "Proceedings of the OCCURENCE International Systems and Storage Conference (SYSTOR)"],
+    "hotstorage" : ['o', "Proceedings of the OCCURENCE USENIX Workshop on Hot Topics in Storage and File Systems (HotStorage)"],
+    "msst"      : ['o', "Proceedings of the OCCURENCE IEEE Symposium on Mass Storage Systems and Technologies (MSST)"],
+    "iwmm"      : ['y', "Proceedings of the YEAR International Workshop on Memory Management"],
+    "damon"     : ['o', "Proceedings of the OCCURENCE International Workshop on Data Management on New Hardware (DaMoN)"]
 }
 
 SHORTCONF = {
@@ -265,7 +269,7 @@ for y in range (1990,2015):
     F.write(make_sigcomm("pldi",y))
 
 
-for y in range(2006,2017):
+for y in range(2006,2019):
     F.write(make_sigcomm("eurosys",y))
 
 
@@ -287,7 +291,7 @@ annual_occ("wsdm",1,2008,2017)
 annual_occ("iptps",1,2002,2017)
 annual_occ("podc",1,1982,2017)
 annual_occ("icac",1,2004,2017)
-annual_occ("fast",5,2007,2017)
+annual_occ("fast",5,2007,2019)
 
 
 ### careful - pdp changes from conference to workshop
@@ -350,6 +354,12 @@ annual_year("iiswc",2006,2018)
 annual_occ("spaa",12,2000,2018)
 annual_occ("vldb",26,2000,2008)
 annual_occ("sigcse",42,2011,2012)
+
+annual_occ("systor", 1, 2008, 2018)
+annual_occ("hotstorage",6, 2014, 2018)
+annual_occ("msst", 29, 2013, 2018)
+annual_year("iwmm", 1995, 1997)
+annual_occ("damon", 10, 2014, 2018)
 F.close()
 
 
