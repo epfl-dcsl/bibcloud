@@ -254,11 +254,14 @@ sub Spill {
 
 	    $p = ReplaceCommand($p,"\\label"," [LABEL]");
 	    $p = ReplaceCommand($p,"\\ignore","");
-	    $p = DropCommand($p,"\\edb");
+	    $p = ReplaceCommand($p,"\\edb","");
 
 		$p = ReplaceString($p,"\\eg~","e.g., ");
 		$p = ReplaceString($p,"\\ie~","i.e., ");
-
+		$p = ReplaceString($p,"\\eg","e.g.,");
+		$p = ReplaceString($p,"\\ie","i.e.,");
+		$p = ReplaceString($p,"\\noindent","");
+		$p = ReplaceString($p,"\\item","\n[ITEM:]"); 
 			
 	} elsif ($option eq "acm") { 
 	    while ($p =~/\\comment{/) { 
@@ -341,8 +344,8 @@ sub Spill {
 	    $p = Roff($p,"{\\bf ","\n.I \"","\"\n");
 	    $p = Roff($p,"{\\tt ","\n.KW \"","\"\n");  # like KW (\emph)
 
-	    $p = ReplaceString($p,"\noindent","");
-
+	    $p = ReplaceString($p,"\\noindent","");
+        $p = ReplaceString($p,"\\item","\n[ITEM:] ");
 	    $p =~ s/~/ /g;
 	}
 

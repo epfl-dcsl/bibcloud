@@ -217,7 +217,7 @@ for occ in range (4,14):
     F.write(make_sosp("osdi",y,occ))
 
 
-annual_occ("isca",17,1990,2017)
+annual_occ("isca",17,1990,2018)
 annual_occ("nsdi",1,2004,2018)
 
 
