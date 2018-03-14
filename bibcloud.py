@@ -120,8 +120,9 @@ NOACKCONFERENCE = {
     "ACM SIGOPS European Workshop" : "ACM SIGOPS European Workshop",
     "3PGCIC" : "threePGCIC",
     "Big Data" :"bigdata",
-    "INFLOW@SOSP" :"inflow"
-
+    "INFLOW@SOSP" :"inflow",
+    "IEEE Real Time Technology and Applications Symposium": "rtas",
+    "Hot Interconnects": "hoti",
 }
 
 ############

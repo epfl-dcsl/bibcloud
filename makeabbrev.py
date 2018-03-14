@@ -81,9 +81,11 @@ CONF = {
     "icdcs"   : ['o', "Proceedings of the OCCURENCE IEEE International Conference on Distributed Computing Systems (ICDCS)"],
     "iiswc"   : ['y', "Proceedings of the YEAR IEEE International Symposium on Workload Characterization (IISWC)"],
     "spaa"    : ['o', "Proceedings of the OCCURENCE ACM Symposium on Parallelism in Algorithms and Architectures (SPAA)"],
-   "vldb"     : ['o', "Proceedings of the OCCURENCE International Conference on Very Large DataBases (VLDB)"],
-    "sigcse"  : ['o', "Proceedings of the OCCURENCE ACM Technical Symposium on Computer Science Education (SIGCSE)"] 
-    
+    "vldb"     : ['o', "Proceedings of the OCCURENCE International Conference on Very Large DataBases (VLDB)"],
+    "sigcse"  : ['o', "Proceedings of the OCCURENCE ACM Technical Symposium on Computer Science Education (SIGCSE)"],
+    "hoti"    : ['y', "Proceedings of the YEAR Annual Symposium on High-Performance Interconnects"],
+    "rtas"    : ['y', "Proceedings of the YEAR Real-Time and Embedded Technology and Applications Symposium"],
+    'hotcloud'    : ['o', "Proceedings of the OCCURENCE  workshop on Hot topics in Cloud Computing (HotCloud)"],
 }
 
 SHORTCONF = {
@@ -304,6 +306,7 @@ for y in range (1993,2006):
 
 annual_occ("acsac",10,1994,2017)
 annual_occ("hotsdn",1,2012,2017)
+annual_occ("hotcloud",1,2009,2017)
 
 
 for y in range (1989,2017):
@@ -320,6 +323,16 @@ annual_occ("iccd",23,2005,2015)
 occ = 1
 for y in range (2005,2018):
     F.write(make_sigcomm("hpcc",y))
+    occ = occ+1
+
+occ = 1
+for y in range (2005,2018):
+    F.write(make_sigcomm("hoti",y))
+    occ = occ+1
+
+occ = 1
+for y in range (2005,2018):
+    F.write(make_sigcomm("rtas",y))
     occ = occ+1
 
 F.write(make_sosp("ishpc",2000,3))
