@@ -123,6 +123,7 @@ NOACKCONFERENCE = {
     "INFLOW@SOSP" :"inflow",
     "IEEE Real Time Technology and Applications Symposium": "rtas",
     "Hot Interconnects": "hoti",
+    "Workshop on Hot Topics in Operating Systems" :"hotos"
 }
 
 ############
