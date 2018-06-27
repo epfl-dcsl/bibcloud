@@ -1,0 +1,95 @@
+
+
+ 
+% this file is compatible with 
+%  - the sigplanconf.sty 
+%  - the SIG-ALT-FULL.CLS - VERSION 1.6
+%  - also the USENIX conferences (osdi, etc)
+%  - also ASPLOS (jpaper)
+
+% v0.1 - 2018-06-20
+
+
+% Comment/comment the lines to dynamically configure the file
+
+\newif\ifcomments
+%\commentstrue
+
+
+
+% PACKAGES THAT MUST ALWAYS BE DEFINED ONE WAY OR ANOTHER
+
+\usepackage{xspace}                         % auto-space mgmt for commands
+\usepackage{subfig}                         % subfloat
+\usepackage[normalem]{ulem}                 % sout
+\usepackage{upgreek}
+\usepackage{comment}                        % \begin{comment}
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{multirow}
+
+
+%USENIX conferences are just {article} -- requires this additional:
+%
+\makeatletter
+\@ifclassloaded{sigplanconf}{
+%sigplanconf only additions
+\usepackage{gensymb}  %socc - celsius
+}{
+%else
+\usepackage{cite} % automatically sorts the citations.  there is an optional [nocompress].
+
+\@ifclassloaded{jpaper}{
+% ASPLOS papers
+}{
+% USENIX papers (in practice)
+\usepackage{gensymb}  %socc - celsius
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{url}
+}
+}
+\makeatletter
+
+
+
+%% poor man's layout
+%% when \usepackage{layout} .... \layout is broken
+
+\newcommand{\printlayout}{{\bf The textwidth \the\textwidth; the columnwidth is \the\columnwidth}}
+
+% HYPHENATION HELP
+
+\hyphenation{user-space}
+
+% GENERIC THINGS
+
+\newcommand{\eg}{\textit{e.g.,}\xspace}
+\newcommand{\ie}{\textit{i.e.,}\xspace}
+\newcommand{\egparen}[1]{(\eg~#1)\xspace}
+\newcommand{\ieparen}[1]{(\ie~#1)\xspace}
+\newcommand{\egp}[1]{\egparen{#1}}
+\newcommand{\iep}[1]{\ieparen{#1}}
+
+\newcommand{\etc}{\textit{etc.}\xspace}
+\newcommand{\etal}{\textit{et al.}\xspace}
+\newcommand{\twiddle}{$\sim$}
+\newcommand{\microsecond}{$\upmu{}$s\xspace}
+\newcommand{\nanosecond}{$ns$\xspace}
+
+\newcommand{\myitem}{\noindent$\bullet\hspace{10pt}$}
+\newcommand{\myparagraph}[1]{\vspace{1em}\noindent {\bf #1:}}
+ 
+%DCSL
+
+
+\newcommand{\edb}[1]{\noindent{{\bf \fbox{EdB:} {\textcolor{red}{\it#1}}}}}
+\newcommand{\george}[1]{\noindent{{\bf \fbox{GP:} {\textcolor{blue}{\it#1}}}}}
+\newcommand{\marios}[1]{\noindent{{\bf \fbox{MK:} {\textcolor{green}{\it#1}}}}}
+\newcommand{\jf}[1]{\noindent{{\bf \fbox{JF:} {\textcolor{Peach}{\it#1}}}}}
+\newcommand{\ag}[1]{\noindent{{\bf \fbox{AG:} {\textcolor{Gray}{\it#1}}}}}
+\newcommand{\sam}[1]{\noindent{{\bf \fbox{Sam:} {\textcolor{cyan}{\it#1}}}}}
+
+
+
+%make sure to always define in the main latex file
+%\newcommand{\system}{\textsc{FOOBAR}\xspace}
