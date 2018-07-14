@@ -86,6 +86,7 @@ CONF = {
     "hoti"    : ['y', "Proceedings of the YEAR Annual Symposium on High-Performance Interconnects"],
     "rtas"    : ['y', "Proceedings of the YEAR Real-Time and Embedded Technology and Applications Symposium"],
     'hotcloud'    : ['o', "Proceedings of the OCCURENCE  workshop on Hot topics in Cloud Computing (HotCloud)"],
+    "cloud" : ['o', "Proceedings of the OCCURENCE IEEE International Conference on Cloud Computing (CLOUD)"]
 }
 
 SHORTCONF = {
@@ -363,6 +364,7 @@ annual_year("iiswc",2006,2018)
 annual_occ("spaa",12,2000,2018)
 annual_occ("vldb",26,2000,2008)
 annual_occ("sigcse",42,2011,2012)
+annual_occ("cloud",2,2009,2018)
 F.close()
 
 
