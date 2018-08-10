@@ -87,7 +87,9 @@ CONF = {
     "rtas"    : ['y', "Proceedings of the YEAR Real-Time and Embedded Technology and Applications Symposium"],
     'hotcloud'    : ['o', "Proceedings of the OCCURENCE  workshop on Hot topics in Cloud Computing (HotCloud)"],
     "cloud" : ['o', "Proceedings of the OCCURENCE IEEE International Conference on Cloud Computing (CLOUD)"],
-    "woot" : ['o', "Proceedings of the OCCURENCE {USENIX} Workshop on Offensive Technologies (WOOT)"]
+    "woot" : ['o', "Proceedings of the OCCURENCE {USENIX} Workshop on Offensive Technologies (WOOT)"],
+    "iwmm"  : ['y',"Proceedings of the YEAR International Workshop on Memory Management (IWMM)"],
+    "ismm"  : ['o',"Proceedings of the OCCURENCE International Symposium on Memory Management (ISMM)"]
 }
 
 SHORTCONF = {
@@ -221,7 +223,7 @@ for occ in range (4,14):
     F.write(make_sosp("osdi",y,occ))
 
 
-annual_occ("isca",17,1990,2018)
+annual_occ("isca",17,1990,2019)
 annual_occ("nsdi",1,2004,2019)
 
 
@@ -265,7 +267,7 @@ for occ in range (1,25):
     y = 1994 + occ
     F.write(make_sigcomm("usenix",y))
 
-for y in range (1990,2015): 
+for y in range (1990,2018): 
     F.write(make_sigcomm("pldi",y))
 
 
@@ -367,6 +369,11 @@ annual_occ("vldb",26,2000,2008)
 annual_occ("sigcse",42,2011,2012)
 annual_occ("cloud",2,2009,2018)
 annual_occ("woot",4,2010,2018)
+
+#crazy ones:
+annual_year("iwmm",1992,1996)
+annual_occ("ismm",4,2004,2005)
+
 F.close()
 
 

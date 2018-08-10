@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python2.7
 # -*- coding: latin-1 -*-
 
 ####
@@ -116,6 +116,7 @@ NOACKCONFERENCE = {
     "Internet Measurement Conference" : "IMC",
     "Internet Measurement Comference" : "IMC",
     "Internet Measurement Workshop" : "IMC",
+    "IPDPS Workshops": "IPDPS",
     "USENIX Security Symposium" : "USS",
     "ACM SIGOPS European Workshop" : "ACM SIGOPS European Workshop",
     "3PGCIC" : "threePGCIC",
