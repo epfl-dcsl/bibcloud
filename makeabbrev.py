@@ -89,7 +89,8 @@ CONF = {
     "cloud" : ['o', "Proceedings of the OCCURENCE IEEE International Conference on Cloud Computing (CLOUD)"],
     "woot" : ['o', "Proceedings of the OCCURENCE {USENIX} Workshop on Offensive Technologies (WOOT)"],
     "iwmm"  : ['y',"Proceedings of the YEAR International Workshop on Memory Management (IWMM)"],
-    "ismm"  : ['o',"Proceedings of the OCCURENCE International Symposium on Memory Management (ISMM)"]
+    "ismm"  : ['o',"Proceedings of the OCCURENCE International Symposium on Memory Management (ISMM)"],
+    "cidr"  : ['o',"Proceedings of the OCCURENCE Biennial Conference on Innovative Data Systems Research (CIDR)"]
 }
 
 SHORTCONF = {
@@ -373,6 +374,10 @@ annual_occ("woot",4,2010,2018)
 #crazy ones:
 annual_year("iwmm",1992,1996)
 annual_occ("ismm",4,2004,2005)
+
+for occ in range (1,9):
+    y = 2001 + occ*2
+    F.write(make_sosp("cidr",y,occ))
 
 F.close()
 
