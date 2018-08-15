@@ -90,7 +90,8 @@ CONF = {
     "woot" : ['o', "Proceedings of the OCCURENCE {USENIX} Workshop on Offensive Technologies (WOOT)"],
     "iwmm"  : ['y',"Proceedings of the YEAR International Workshop on Memory Management (IWMM)"],
     "ismm"  : ['o',"Proceedings of the OCCURENCE International Symposium on Memory Management (ISMM)"],
-    "cidr"  : ['o',"Proceedings of the OCCURENCE Biennial Conference on Innovative Data Systems Research (CIDR)"]
+    "cidr"  : ['o',"Proceedings of the OCCURENCE Biennial Conference on Innovative Data Systems Research (CIDR)"],
+    "simpar" : ['y', "Proceedings of the YEAR IEEE International Conference on Simulation, Modeling, and Programming for Autonomous Robots (SIMPAR)"]
 }
 
 SHORTCONF = {
@@ -370,6 +371,7 @@ annual_occ("vldb",26,2000,2008)
 annual_occ("sigcse",42,2011,2012)
 annual_occ("cloud",2,2009,2018)
 annual_occ("woot",4,2010,2018)
+annual_year("simpar",2008,2018)
 
 #crazy ones:
 annual_year("iwmm",1992,1996)
