@@ -465,8 +465,9 @@ for c in dblp_citations:
                     else:
                         F.write("  booktitle = "+booktitle+year+",\n")
                 else:
-                    print "FATAL -- Unknown conference",booktitle
-                    sys.exit(1)
+                    print "WARNING -- Unknown conference",booktitle
+                    F.write("  booktitle = \""+booktitle+"\",\n")
+                    # sys.exit(1)
             else:
                 F.write("  booktitle = "+booktitle+year+",\n")
 
