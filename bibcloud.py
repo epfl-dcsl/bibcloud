@@ -312,7 +312,14 @@ def escape_percent(s):
         return s
 
 
+#complete mess
 def escape_percent_amp(s):
+
+    y = s.find("\\&")
+    if y>=0:
+        print "ESCAPING - skip \\&:",s 
+        return s[:y+2] + escape_percent_amp(s[y+2:])
+
     x = s.find("%")
     y = s.find("&")
 
