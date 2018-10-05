@@ -96,6 +96,7 @@ CONF = {
     "wren"  : ['o',"Proceedings of the OCCURENCE ACM SIGCOMM 2009 Workshop on Research on Enterprise Networking (WREN)"],
     "simpar" : ['y', "Proceedings of the YEAR IEEE International Conference on Simulation, Modeling, and Programming for Autonomous Robots (SIMPAR)"],
     "nips"   : ['y', "Proceedings of the YEAR Annual Conference on Neural Information Processing Systems (NIPS)"],
+    "kbnets@sigcomm"   : ['y', "Proceedings of the YEAR Workshop on Kernel Bypassing Networks (KBNets)"],
 }
 
 SHORTCONF = {
@@ -283,6 +284,9 @@ for y in range(2006,2017):
 
 for y in range (2010,2011):
     F.write(make_sigcomm("islped",y))
+
+for y in range(2017,2020):
+    F.write(make_sigcomm("kbnets@sigcomm",y))
 
 annual_occ("hpca",1,1995,2017)
 annual_occ("micro",1,1968,2017)
