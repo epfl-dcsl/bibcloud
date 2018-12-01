@@ -92,6 +92,11 @@ DBLP_fieldlist = {'article':
                        'year':'id',
                        'pages':'id',
                        'ee': 'ee'},
+                  'incollection':
+                      {'title':'double',
+                       'year':'id',
+                       'pages':'id',
+                       'ee': 'ee'},
                   'book':
                       {'title':'double',
                        'booktitle':'id',
@@ -128,6 +133,9 @@ NOACKCONFERENCE = {
     "IEEE WISA": "IEEE WISA"
 }
 
+
+WORKSHOPS = ["HotOS","KBNets@SIGCOMM"]
+
 ############
 ### globals
 ############
@@ -145,8 +153,14 @@ def find_citation(l):
         y = l.find("{")
         z = l.find("}",y)
         return l[y+1:z]
-    else:
-        return ""
+        
+    x = l.find("\\abx@aux@cite{")
+    if (x>=0):
+        y = l.find("{")
+        z = l.find("}",y)
+        return l[y+1:z]
+    
+    return ""
 
 def load_references(bibname):
 
@@ -204,7 +218,7 @@ def update_dblp(citations,latex_backmap):
         root = tree.getroot()
         for child in root:
             num_children = num_children+1
-            if child.tag == "article" or child.tag=="inproceedings" or child.tag=="book":
+            if child.tag == "article" or child.tag=="inproceedings" or child.tag=="book" or child.tag=="incollection" :
                 DBLP_article["DBLP:"+child.attrib['key']] = child
     except:
         print "bibcloud: No cache file found...fetching (if the problem persists, delete",LOCALFILES['cache']
@@ -416,7 +430,7 @@ root = tree.getroot()
 num_children = 0
 for child in root:
     num_children = num_children+1
-    if child.tag == "article" or child.tag=="inproceedings" or child.tag=="book":
+    if child.tag == "article" or child.tag=="inproceedings" or child.tag=="book" or child.tag=="incollection":
         DBLP_article["DBLP:"+child.attrib['key']] = child
 
 
@@ -429,11 +443,13 @@ F.write("%%% DO NOT EDIT\n\n\n")
 for c in dblp_citations:
     if DBLP_article.has_key(c):
         xml = DBLP_article[c]
-        if not xml.tag in ["article","inproceedings","book"]:
+        if not xml.tag in ["article","inproceedings","book","incollection"]:
             print "bibcloud FATAL unkown tag"
             sys.exit(1)
 
         fieldlist = DBLP_fieldlist[xml.tag]
+
+
         authorlist = [a.text for a in xml if a.tag=="author"]
         authorlist = [html_to_bibtex(a) for a in authorlist]
         authorlist = [author_trim(a) for a in authorlist]
@@ -442,7 +458,10 @@ for c in dblp_citations:
         else:
             processedEE = 0
 
-        F.write("\n@"+xml.tag+"{"+latex_backmap[c]+",\n")
+        if xml.tag =="incollection":
+            F.write("\n@"+"inproceedings"+"{"+latex_backmap[c]+",\n")
+        else:
+            F.write("\n@"+xml.tag+"{"+latex_backmap[c]+",\n")
         F.write("  author = {"+  " and ".join(authorlist) + "},\n")
 
         for a in xml:
@@ -461,7 +480,7 @@ for c in dblp_citations:
                 else:
                     print "BAD code",fieldlist[a.tag]
                     sys.exit()
-        if xml.tag == "inproceedings":
+        if xml.tag == "inproceedings" or xml.tag=="incollection":
             year = xml.find('year').text[2:]
             booktitle = xml.find('booktitle').text
             if booktitle.find(" ") >0 or booktitle == "3PGCIC" or booktitle == "INFLOW@SOSP":
@@ -478,6 +497,9 @@ for c in dblp_citations:
             else:
                 F.write("  booktitle = "+booktitle+year+",\n")
 
+            if (booktitle in WORKSHOPS) or (xml.tag=="incollection") : 
+                F.write("  keywords = {workshop},\n")
+                print booktitle,"in workshop!",c
 
         if c != latex_backmap[c]:
              F.write("  bibsource = {DBLP alias: "+c+"}\n")
