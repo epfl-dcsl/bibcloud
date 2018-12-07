@@ -96,7 +96,8 @@ CONF = {
     "wren"  : ['o',"Proceedings of the OCCURENCE ACM SIGCOMM 2009 Workshop on Research on Enterprise Networking (WREN)"],
     "simpar" : ['y', "Proceedings of the YEAR IEEE International Conference on Simulation, Modeling, and Programming for Autonomous Robots (SIMPAR)"],
     "nips"   : ['y', "Proceedings of the YEAR Annual Conference on Neural Information Processing Systems (NIPS)"],
-    "kbnets@sigcomm" : ['y',"Proceedings of the YEAR Workshop on Kernel-Bypass Networks (KBNETS@SIGCOMM)"]
+    "kbnets@sigcomm" : ['y',"Proceedings of the YEAR Workshop on Kernel-Bypass Networks (KBNETS@SIGCOMM)"],
+    "sigir" : ['o', "Proceedings of the OCCURENCE International ACM SIGIR conference on Research and Development in Information Retrieval (SIGIR)"]
 }
 
 SHORTCONF = {
@@ -389,6 +390,8 @@ annual_year("kbnets@sigcomm",2016,2019)
 #crazy ones:
 annual_year("iwmm",1992,1996)
 annual_occ("ismm",4,2004,2005)
+annual_occ("sigir",35,2012,2019)
+
 
 for occ in range (1,9):
     y = 2001 + occ*2
