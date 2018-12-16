@@ -98,7 +98,9 @@ CONF = {
     "nips"   : ['y', "Proceedings of the YEAR Annual Conference on Neural Information Processing Systems (NIPS)"],
     "kbnets@sigcomm" : ['y',"Proceedings of the YEAR Workshop on Kernel-Bypass Networks (KBNETS@SIGCOMM)"],
     "sigir" : ['o', "Proceedings of the OCCURENCE International ACM SIGIR conference on Research and Development in Information Retrieval (SIGIR)"],
-    "ccgrid" : ['o', "Proceedings of the OCCURENCE IEEE/ACM International Symposium on Cluster, Cloud and Grid Computing (CCGRID)"]
+    "ccgrid" : ['o', "Proceedings of the OCCURENCE IEEE/ACM International Symposium on Cluster, Cloud and Grid Computing (CCGRID)"],
+    "networking" : ['y', "Proceedings of the YEAR IFIP Networking Conference"],
+    "apnet"  : ['o', "Proceedings of the OCCURENCE Asia-Pacific Workshop on Networking (APNet)"]
 }
 
 SHORTCONF = {
@@ -393,8 +395,8 @@ annual_occ("ccgrid",10,2010,2019)
 #crazy ones:
 annual_year("iwmm",1992,1996)
 annual_occ("ismm",4,2004,2005)
-
-
+annual_year("networking",2010,2019)
+annual_occ("apnet",1,2017,2018)
 
 for occ in range (1,9):
     y = 2001 + occ*2
