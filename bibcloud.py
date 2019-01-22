@@ -102,8 +102,13 @@ DBLP_fieldlist = {'article':
                        'booktitle':'id',
                        'series':'id',
                        'publisher':'id',
-                       'year':'id'}}
-
+                       'year':'id'},
+                  "phdthesis":
+                  {"title":"double",
+                   "year":"id",
+                   "school":"id",
+                   "ee":"ee"}
+}
 
 # conferences where DBLP does not use an acronym ... normalization is never perfect"
 NOACKCONFERENCE = {
@@ -144,7 +149,7 @@ ALIAS = {}
 REVALIAS = {}
 TITLESUB = {}
 
-
+valid_tags = set(DBLP_fieldlist.keys())
 
 ##### extraction from bibtex .aux file #########
 def find_citation(l):
@@ -218,7 +223,7 @@ def update_dblp(citations,latex_backmap):
         root = tree.getroot()
         for child in root:
             num_children = num_children+1
-            if child.tag == "article" or child.tag=="inproceedings" or child.tag=="book" or child.tag=="incollection" :
+            if child.tag in valid_tags:
                 DBLP_article["DBLP:"+child.attrib['key']] = child
     except:
         print "bibcloud: No cache file found...fetching (if the problem persists, delete",LOCALFILES['cache']
@@ -431,7 +436,7 @@ root = tree.getroot()
 num_children = 0
 for child in root:
     num_children = num_children+1
-    if child.tag == "article" or child.tag=="inproceedings" or child.tag=="book" or child.tag=="incollection":
+    if child.tag in valid_tags:
         DBLP_article["DBLP:"+child.attrib['key']] = child
 
 
@@ -444,7 +449,7 @@ F.write("%%% DO NOT EDIT\n\n\n")
 for c in dblp_citations:
     if DBLP_article.has_key(c):
         xml = DBLP_article[c]
-        if not xml.tag in ["article","inproceedings","book","incollection"]:
+        if xml.tag not in valid_tags:
             print "bibcloud FATAL unkown tag"
             sys.exit(1)
 
