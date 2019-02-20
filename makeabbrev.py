@@ -101,7 +101,8 @@ CONF = {
     "ccgrid" : ['o', "Proceedings of the OCCURENCE IEEE/ACM International Symposium on Cluster, Cloud and Grid Computing (CCGRID)"],
     "networking" : ['y', "Proceedings of the YEAR IFIP Networking Conference"],
     "apnet"  : ['o', "Proceedings of the OCCURENCE Asia-Pacific Workshop on Networking (APNet)"],
-    "focs" : ['o', "Proceedings of the OCCURENCE IEEE Annual Symposium on Foundations of Computer Science (FOCS)"]
+    "focs" : ['o', "Proceedings of the OCCURENCE IEEE Annual Symposium on Foundations of Computer Science (FOCS)"],
+    "mapl@pldi": ['o', "Proceedings of the OCCURENCE ACM SIGPLAN International Workshop on Machine Learning and Programming Languages (MAPL@PLDI)"]
 }
 
 SHORTCONF = {
@@ -392,6 +393,7 @@ annual_occ("focs",41,2000,2001)
 annual_year("kbnets@sigcomm",2016,2019)
 annual_occ("sigir",35,2012,2019)
 annual_occ("ccgrid",10,2010,2019)
+annual_occ("mapl@pldi",1,2017,2018)
 
 #crazy ones:
 annual_year("iwmm",1992,1996)
