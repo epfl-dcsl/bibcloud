@@ -100,7 +100,8 @@ CONF = {
     "sigir" : ['o', "Proceedings of the OCCURENCE International ACM SIGIR conference on Research and Development in Information Retrieval (SIGIR)"],
     "ccgrid" : ['o', "Proceedings of the OCCURENCE IEEE/ACM International Symposium on Cluster, Cloud and Grid Computing (CCGRID)"],
     "networking" : ['y', "Proceedings of the YEAR IFIP Networking Conference"],
-    "apnet"  : ['o', "Proceedings of the OCCURENCE Asia-Pacific Workshop on Networking (APNet)"]
+    "apnet"  : ['o', "Proceedings of the OCCURENCE Asia-Pacific Workshop on Networking (APNet)"],
+    "focs" : ['o', "Proceedings of the OCCURENCE IEEE Annual Symposium on Foundations of Computer Science (FOCS)"]
 }
 
 SHORTCONF = {
@@ -128,7 +129,6 @@ def make_sigcomm(conf,year):
         return "@string{"+conf+ '%02d' % yy +" = \"" + confstr + "\"}\n"
 
     return "@string{"+conf+ '%02d' % yy +" = \"" +ss + "\"}\n"
-
 
 def make_sosp(conf,year,occurence):
     global CONF
@@ -388,6 +388,7 @@ annual_occ("lcn",38,2013,2019)
 annual_occ("wren",1,2009,2010)
 annual_year("simpar",2008,2018)
 annual_year("nips",2010,2018)
+annual_occ("focs",41,2000,2001)
 annual_year("kbnets@sigcomm",2016,2019)
 annual_occ("sigir",35,2012,2019)
 annual_occ("ccgrid",10,2010,2019)
@@ -402,9 +403,4 @@ for occ in range (1,9):
     y = 2001 + occ*2
     F.write(make_sosp("cidr",y,occ))
 
-
-
 F.close()
-
-
-
