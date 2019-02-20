@@ -381,6 +381,8 @@ annual_occ("icdcs",20,2000,2018)
 annual_year("iiswc",2006,2018)
 annual_occ("spaa",12,2000,2018)
 annual_occ("vldb",26,2000,2008)
+annual_occ("vldb",5, 1979, 1980)
+
 annual_occ("sigcse",42,2011,2012)
 annual_occ("cloud",2,2009,2018)
 annual_occ("woot",4,2010,2018)
