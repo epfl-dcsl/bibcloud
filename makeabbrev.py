@@ -19,7 +19,8 @@ ROMAN_TABLE = [
     "XXI","XXII","XXIII","XXIV","XXV","XXVI","XXVII","XXVIII","XXIX","XXX"
 ]
 
-
+# Note: the first item indicates whether the long name is a YEAR or an OCCURENCE (e.g. 1st, 2nd, ...74th...)
+# 'r' is for roman, 'y' for year, 'o' for occurrence
 CONF = {
     'sigcomm'   : ['y', "Proceedings of the ACM SIGCOMM YEAR Conference"],
     'sigmetrics': ['y', "Proceedings of the YEAR ACM SIGMETRICS International Conference on Measurement and Modeling of Computer Systems"],
@@ -102,7 +103,9 @@ CONF = {
     "networking" : ['y', "Proceedings of the YEAR IFIP Networking Conference"],
     "apnet"  : ['o', "Proceedings of the OCCURENCE Asia-Pacific Workshop on Networking (APNet)"],
     "focs" : ['o', "Proceedings of the OCCURENCE IEEE Annual Symposium on Foundations of Computer Science (FOCS)"],
-    "mapl@pldi": ['o', "Proceedings of the OCCURENCE ACM SIGPLAN International Workshop on Machine Learning and Programming Languages (MAPL@PLDI)"]
+    "mapl@pldi": ['o', "Proceedings of the OCCURENCE ACM SIGPLAN International Workshop on Machine Learning and Programming Languages (MAPL@PLDI)"],
+    "bcb": ['o', "Proceedings of the OCCURENCE ACM International Conference on Bioinformatics, Computational Biology,and Health Informatics"],
+    "hilt": ['y', "Proceedings of the YEAR ACM SIGAda annual conference on High integrity language technology"],
 }
 
 SHORTCONF = {
@@ -303,7 +306,7 @@ for y in range (2010,2017):
     F.write(make_sigcomm("apsys",y))
 
 
-annual_occ("ppopp",10,2005,2017)
+annual_occ("ppopp",10,2005,2019)
 annual_occ("wsdm",1,2008,2017)
 annual_occ("iptps",1,2002,2017)
 annual_occ("podc",1,1982,2017)
@@ -391,11 +394,13 @@ annual_occ("lcn",38,2013,2019)
 annual_occ("wren",1,2009,2010)
 annual_year("simpar",2008,2018)
 annual_year("nips",2010,2018)
+annual_year("hilt", 2014,2015)
 annual_occ("focs",41,2000,2001)
 annual_year("kbnets@sigcomm",2016,2019)
 annual_occ("sigir",35,2012,2019)
 annual_occ("ccgrid",10,2010,2019)
 annual_occ("mapl@pldi",1,2017,2018)
+annual_occ("bcb",8,2017,2018)
 
 #crazy ones:
 annual_year("iwmm",1992,1996)
