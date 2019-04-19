@@ -107,6 +107,7 @@ CONF = {
     "bcb": ['o', "Proceedings of the OCCURENCE ACM International Conference on Bioinformatics, Computational Biology,and Health Informatics"],
     "hilt": ['y', "Proceedings of the YEAR ACM SIGAda annual conference on High integrity language technology"],
     "minenet": ['o', "Proceedings of the OCCURENCE Annual ACM Workshop on Mining Network Data (MineNet)"],
+    "memsys" : ['y', "Proceedings of the YEAR International Symposium on Memory Systems (MEMSYS)"],
 }
 
 SHORTCONF = {
@@ -403,6 +404,7 @@ annual_occ("ccgrid",10,2010,2019)
 annual_occ("mapl@pldi",1,2017,2018)
 annual_occ("bcb",8,2017,2018)
 annual_occ("minenet",1,2005,2008)
+annual_year("memsys",2015,2020)
 
 #crazy ones:
 annual_year("iwmm",1992,1996)

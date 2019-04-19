@@ -253,6 +253,7 @@ sub Spill {
 
 
 	    $p = ReplaceCommand($p,"\\label"," [LABEL]");
+	    $p = ReplaceCommand($p,"\\includegraphics"," [PICTURE]");
 	    $p = ReplaceCommand($p,"\\ignore","");
 	    $p = ReplaceCommand($p,"\\edb","");
 
@@ -260,7 +261,10 @@ sub Spill {
 		$p = ReplaceString($p,"\\ie~","i.e., ");
 		$p = ReplaceString($p,"\\eg","e.g.,");
 		$p = ReplaceString($p,"\\ie","i.e.,");
+		$p = ReplaceString($p,"\\etc","etc.,");
+
 		$p = ReplaceString($p,"\\noindent","");
+		$p = ReplaceString($p,"\\centering","");
 		$p = ReplaceString($p,"\\item","\n[ITEM:]"); 
 			
 	} elsif ($option eq "acm") { 
