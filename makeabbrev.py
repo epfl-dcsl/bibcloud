@@ -280,7 +280,7 @@ for occ in range (1,10):
     y = 2005 + occ
     F.write(make_sigcomm("icpp",y))
 
-for occ in range (1,25):
+for occ in range (1,30):
     y = 1994 + occ
     F.write(make_sigcomm("usenix",y))
 
@@ -412,7 +412,7 @@ annual_occ("ismm",4,2004,2005)
 annual_year("networking",2010,2019)
 annual_occ("apnet",1,2017,2018)
 
-for occ in range (1,9):
+for occ in range (1,10):
     y = 2001 + occ*2
     F.write(make_sosp("cidr",y,occ))
 
