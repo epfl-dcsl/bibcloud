@@ -108,6 +108,7 @@ CONF = {
     "hilt": ['y', "Proceedings of the YEAR ACM SIGAda annual conference on High integrity language technology"],
     "minenet": ['o', "Proceedings of the OCCURENCE Annual ACM Workshop on Mining Network Data (MineNet)"],
     "memsys" : ['y', "Proceedings of the YEAR International Symposium on Memory Systems (MEMSYS)"],
+    "oopsla" : ['o', "Proceedings of the OCCURENCE Annual ACM SIGPLAN Conference on Object-Oriented Programming, Systems, Languages, and Applications (OOPSLA)"]
 }
 
 SHORTCONF = {
@@ -411,6 +412,7 @@ annual_year("iwmm",1992,1996)
 annual_occ("ismm",4,2004,2005)
 annual_year("networking",2010,2019)
 annual_occ("apnet",1,2017,2018)
+annual_occ("oopsla",15,2000,2019)
 
 for occ in range (1,10):
     y = 2001 + occ*2
