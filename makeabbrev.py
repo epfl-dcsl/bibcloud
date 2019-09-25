@@ -254,7 +254,7 @@ for y in range(2008,2018):
     F.write(make_asplos("asplos",y,occ))
     occ = occ +1
 
-for occ in range (6,17):
+for occ in range (6,18):
     y = 1997 + (occ-6)*2
     F.write(make_asplos("hotos",y,occ))
 
@@ -299,7 +299,7 @@ for y in range (2010,2011):
 for y in range(2017,2020):
     F.write(make_sigcomm("kbnets@sigcomm",y))
 
-annual_occ("hpca",1,1995,2017)
+annual_occ("hpca",1,1995,2019)
 annual_occ("micro",1,1968,2017)
 annual_occ("uss",7,1998,2019)
 
@@ -340,7 +340,7 @@ for y in range (1989,2017):
 annual_occ("ipdps",24,2010,2017)
 annual_occ("icde",31,2015,2017)
 annual_occ("hotdep",2,2006,2016)
-annual_occ("dsn",37,2007,2017)
+annual_occ("dsn",36,2006,2017)
 annual_occ("vee",1,2005,2016)
 annual_occ("wmcsa",4,2002,2004)
 annual_occ("iccd",23,2005,2015)

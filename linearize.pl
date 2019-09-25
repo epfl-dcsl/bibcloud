@@ -368,6 +368,13 @@ sub Spill {
 		print OUT substr($p,0,$start-1);
 	    }
 	    my $inputfile = substr($p,$openbrace+1,$end-$openbrace-1);
+
+		my $extension = index($inputfile,".tex");
+		if ($extension>0) { 
+			$inputfile = substr($inputfile,0,$extension);
+			print "XXX TRIM inputfile $inputfile\n";
+		}
+
 	    $p = substr($p,$end+1); #remaining paragraph
 	    print STDERR "Including $inputfile\n";
 	    if ($option ne "roff")  {
