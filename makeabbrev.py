@@ -108,7 +108,11 @@ CONF = {
     "hilt": ['y', "Proceedings of the YEAR ACM SIGAda annual conference on High integrity language technology"],
     "minenet": ['o', "Proceedings of the OCCURENCE Annual ACM Workshop on Mining Network Data (MineNet)"],
     "memsys" : ['y', "Proceedings of the YEAR International Symposium on Memory Systems (MEMSYS)"],
-    "oopsla" : ['o', "Proceedings of the OCCURENCE Annual ACM SIGPLAN Conference on Object-Oriented Programming, Systems, Languages, and Applications (OOPSLA)"]
+    "oopsla" : ['o', "Proceedings of the OCCURENCE Annual ACM SIGPLAN Conference on Object-Oriented Programming, Systems, Languages, and Applications (OOPSLA)"],
+    "srds"   : ['o', "Proceedings of the OCCURENCE IEEE Symposium on Reliable Distributed Systems (SRDS)"],
+    "icnp"   : ['o', "Proceedings of the OCCURENCE IEEE International Conference on Network Protocols (ICNP)"],
+    "icdcs"  : ['o', "Proceedings of the OCCURENCE IEEE International Conference on Distributed Computing Systems (ICDCS)"],
+    "hpdc"   : ['o', "Proceedings of the OCCURENCE International Symposium on High-Performance Parallel and Distributed Computing (HPDC)"]
 }
 
 SHORTCONF = {
@@ -242,7 +246,7 @@ for occ in range (4,14):
 
 
 annual_occ("isca",17,1990,2019)
-annual_occ("nsdi",1,2004,2019)
+annual_occ("nsdi",1,2004,2020)
 
 
 for occ in range (5,13):
@@ -406,6 +410,10 @@ annual_occ("mapl@pldi",1,2017,2018)
 annual_occ("bcb",8,2017,2018)
 annual_occ("minenet",1,2005,2008)
 annual_year("memsys",2015,2020)
+annual_occ("srds",25,2006,2020)
+annual_occ("icnp",18,2010,2020)
+annual_occ("icdcs",11,1991,2020)
+annual_occ("hpdc",24,2015,2020)
 
 #crazy ones:
 annual_year("iwmm",1992,1996)
