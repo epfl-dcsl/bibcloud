@@ -112,7 +112,8 @@ CONF = {
     "srds"   : ['o', "Proceedings of the OCCURENCE IEEE Symposium on Reliable Distributed Systems (SRDS)"],
     "icnp"   : ['o', "Proceedings of the OCCURENCE IEEE International Conference on Network Protocols (ICNP)"],
     "icdcs"  : ['o', "Proceedings of the OCCURENCE IEEE International Conference on Distributed Computing Systems (ICDCS)"],
-    "hpdc"   : ['o', "Proceedings of the OCCURENCE International Symposium on High-Performance Parallel and Distributed Computing (HPDC)"]
+    "hpdc"   : ['o', "Proceedings of the OCCURENCE International Symposium on High-Performance Parallel and Distributed Computing (HPDC)"],
+    "hpts"   : ['y', "Proceedings of the YEAR International Workshop on High-Performance Transaction Systems (HTPS)"]
 }
 
 SHORTCONF = {
@@ -414,6 +415,7 @@ annual_occ("srds",25,2006,2020)
 annual_occ("icnp",18,2010,2020)
 annual_occ("icdcs",11,1991,2020)
 annual_occ("hpdc",24,2015,2020)
+annual_year("hpts",1985,1986)
 
 #crazy ones:
 annual_year("iwmm",1992,1996)
