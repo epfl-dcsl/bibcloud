@@ -283,7 +283,7 @@ HTML_TO_BIB = {
     u"�" : "{\\aa}",
     u"�" : "{\\'y}",
     u"\u2248" : "{$\\approx$}",
-     u"\u03BC" : "{$\\upmu{}$s\\xspace}"
+     u"\u03BC" : "{$\\upmu{}$\\xspace}"
 
 }
 
