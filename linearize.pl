@@ -226,6 +226,7 @@ sub Spill {
 	    $p = ReplaceCommand($p,"~\\ref", " [REF]");
 	    $p = ReplaceCommand($p,"\\S\\ref","[SECREF]");
 		$p = ReplaceCommand($p,"\\sout","");
+		$p = ReplaceCommand($p,"\\autoref","[AUTOREF]");
 
 
 	    while (($start=index($p,"~\\citeName{"))>=0) {
@@ -262,6 +263,8 @@ sub Spill {
 		$p = ReplaceString($p,"\\eg","e.g.,");
 		$p = ReplaceString($p,"\\ie","i.e.,");
 		$p = ReplaceString($p,"\\etc","etc.,");
+		$p = ReplaceString($p,"\\etal","et al.");
+		
 
 		$p = ReplaceString($p,"\\noindent","");
 		$p = ReplaceString($p,"\\centering","");
