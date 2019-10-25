@@ -115,7 +115,8 @@ CONF = {
     "hpdc"   : ['o', "Proceedings of the OCCURENCE International Symposium on High-Performance Parallel and Distributed Computing (HPDC)"],
     "hpts"   : ['y', "Proceedings of the YEAR International Workshop on High-Performance Transaction Systems (HTPS)"],
     "middleware" : ['y',"Proceedings of the YEAR International Middleware Conference"],
-    "adms@vldb" : ['y', "Proceedings of the International Workshop on Accelerating Analytics and Data Management Systems Using Modern Processor and Storage Architectures (ADMS@VLDB)"]
+    "adms@vldb" : ['y', "Proceedings of the International Workshop on Accelerating Analytics and Data Management Systems Using Modern Processor and Storage Architectures (ADMS@VLDB)"],
+    "globecom" : ['y', "Proceedings of the YEAR IEEE Global Communications Conference (GLOBECOM)"],
 }
 
 SHORTCONF = {
@@ -321,7 +322,7 @@ annual_occ("wsdm",1,2008,2017)
 annual_occ("iptps",1,2002,2017)
 annual_occ("podc",1,1982,2017)
 annual_occ("icac",1,2004,2017)
-annual_occ("fast",5,2007,2017)
+annual_occ("fast",5,2007,2020)
 
 
 ### careful - pdp changes from conference to workshop
@@ -420,6 +421,7 @@ annual_occ("hpdc",24,2015,2020)
 annual_year("hpts",1985,1986)
 annual_year("middleware",2000,2020)
 annual_year("adms@vldb",2000,2020)
+annual_year("globecom",2017,2020)
 
 #crazy ones:
 annual_year("iwmm",1992,1996)
