@@ -42,7 +42,6 @@ CONF = {
     'islped'    : ['y', "Proceedings of the YEAR International Symposium on Low Power Electronics and Design"],
     'hpca'      : ['o', "Proceedings of the OCCURENCE IEEE Symposium on High-Performance Computer Architecture (HPCA)"],
     'micro'     : ['o', "Proceedings of the OCCURENCE Annual IEEE/ACM International Symposium on Microarchitecture (MICRO)"],
-    'uss'       : ['o', "Proceedings of the OCCURENCE USENIX Security Symposium"],
     'apsys'     : ['y', "Proceedings of the YEAR Asia-Pacific Workshop on Systems (APSys)"],
     'ppopp'     : ['o', "Proceedings of the OCCURENCE ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming (PPoPP)"],
     'wsdm'      : ['o', "Proceedings of the OCCURENCE International Conference on Web Search and Web Data Mining (WSDM)"],
@@ -309,7 +308,6 @@ for y in range(2017,2020):
 
 annual_occ("hpca",1,1995,2019)
 annual_occ("micro",1,1968,2020)
-annual_occ("uss",7,1998,2019)
 
 
 
@@ -386,7 +384,8 @@ annual_year("ndss",1995,2017)
 annual_occ("popl",15,1988,2018)
 
 F.write(make_sosp("uss",1996,6))
-annual_occ("uss",7,1998,2018)
+annual_occ("uss",7,1998,2020)
+
 
 annual_occ("stoc",1,1969,2018)
 
