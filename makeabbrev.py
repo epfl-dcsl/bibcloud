@@ -117,6 +117,7 @@ CONF = {
     "adms@vldb" : ['y', "Proceedings of the International Workshop on Accelerating Analytics and Data Management Systems Using Modern Processor and Storage Architectures (ADMS@VLDB)"],
     "globecom" : ['y', "Proceedings of the YEAR IEEE Global Communications Conference (GLOBECOM)"],
     "pam" : ['o', "Proceedings of the OCCURENCE International Conference on Passive and Active Measurement (PAM)"],
+    "icc" : ['y', "Proceedings of the YEAR IEEE International Conference on Communications (ICC)"],
 }
 
 SHORTCONF = {
@@ -252,6 +253,8 @@ for occ in range (4,14):
 annual_occ("isca",17,1990,2019)
 annual_occ("nsdi",1,2004,2020)
 annual_occ("pam",8,2007,2020)
+
+annual_year("icc",2000,2019)
 
 for occ in range (5,13):
     y = 1992 + (occ-5)*2
