@@ -251,8 +251,8 @@ for occ in range (4,14):
     F.write(make_sosp("osdi",y,occ))
 
 
-annual_occ("isca",17,1990,2019)
-annual_occ("nsdi",1,2004,2020)
+annual_occ("isca",17,1990,2022)
+annual_occ("nsdi",1,2004,2022)
 annual_occ("pam",8,2007,2020)
 
 annual_year("icc",2000,2019)
@@ -262,7 +262,7 @@ for occ in range (5,13):
     F.write(make_asplos("asplos",y,occ))
 
 occ = 13
-for y in range(2008,2018):
+for y in range(2008,2022):
     F.write(make_asplos("asplos",y,occ))
     occ = occ +1
 
