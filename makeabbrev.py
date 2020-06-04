@@ -119,6 +119,7 @@ CONF = {
     "pam" : ['o', "Proceedings of the OCCURENCE International Conference on Passive and Active Measurement (PAM)"],
     "icc" : ['y', "Proceedings of the YEAR IEEE International Conference on Communications (ICC)"],
     "hotmiddlebox@sigcomm" : ['y',"Proceedings of the YEAR ACM SIGCOMM Workshop on Hot topics in Middleboxes and Network Function Virtualization (HotMiddlebox@SIGCOMM)"],
+    "ndm@sc" : ['o',"Proceedings of the OCCURENCE International Workshop on Network-Aware Data Management (NDM@SC)"],
 }
 
 SHORTCONF = {
@@ -278,6 +279,9 @@ for occ in range (6,17):
 for y in range (1993,2018):
     F.write(make_sigcomm("sc",y))
 
+annual_occ("ndm@sc",3,2013,2016)
+
+
 for occ in range (1,16):
     y = 2004 + occ
     F.write(make_sigcomm("conext",y))
@@ -351,7 +355,7 @@ annual_occ("hotcloud",1,2009,2017)
 for y in range (1989,2017):
     F.write(make_sigcomm("infocom",y))
 
-annual_occ("ipdps",24,2010,2017)
+annual_occ("ipdps",24,2010,2021)
 annual_occ("icde",31,2015,2017)
 annual_occ("hotdep",2,2006,2016)
 annual_occ("dsn",36,2006,2017)

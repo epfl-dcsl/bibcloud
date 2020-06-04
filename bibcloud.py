@@ -487,6 +487,10 @@ for c in dblp_citations:
                 else:
                     print "BAD code",fieldlist[a.tag]
                     sys.exit()
+        if xml.tag == "article":
+            journal = xml.find('journal').text
+            if (journal == "CoRR"):
+                F.write("  keywords = {preprint},\n")
         if xml.tag == "inproceedings" or xml.tag=="incollection":
             year = xml.find('year').text[2:]
             booktitle = xml.find('booktitle').text
