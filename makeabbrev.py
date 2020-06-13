@@ -8,6 +8,11 @@ import sys
 
 global F
 
+#last year should be current year + 1
+#use it as the end of range only for conferences that are assumed to happen annually going forward
+
+MAXYEAR  = 2021
+
 OCCURENCE_TABLE = [
     "th","st","nd","rd","th","th","th","th","th","th","th"
 ]
@@ -120,6 +125,7 @@ CONF = {
     "icc" : ['y', "Proceedings of the YEAR IEEE International Conference on Communications (ICC)"],
     "hotmiddlebox@sigcomm" : ['y',"Proceedings of the YEAR ACM SIGCOMM Workshop on Hot topics in Middleboxes and Network Function Virtualization (HotMiddlebox@SIGCOMM)"],
     "ndm@sc" : ['o',"Proceedings of the OCCURENCE International Workshop on Network-Aware Data Management (NDM@SC)"],
+    "raid" : ['o',"Proceedings of the OCCURENCE International Symposium on Research in Attacks, Intrusions, and Defenses(RAID)"],
 }
 
 SHORTCONF = {
@@ -392,7 +398,7 @@ annual_occ("mobicom",6,2000,2017)
 
 annual_year("bigdata",2012,2018)
 annual_occ("inflow",1,2013,2017)
-annual_year("ndss",1995,2017)
+annual_year("ndss",1995,MAXYEAR)
 annual_occ("popl",15,1988,2018)
 
 F.write(make_sosp("uss",1996,6))
@@ -433,6 +439,7 @@ annual_year("hpts",1985,1986)
 annual_year("middleware",2000,2020)
 annual_year("adms@vldb",2000,2020)
 annual_year("globecom",2017,2020)
+annual_occ("raid",4,2001,MAXYEAR)
 
 #crazy ones:
 annual_year("iwmm",1992,1996)
