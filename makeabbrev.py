@@ -126,6 +126,8 @@ CONF = {
     "hotmiddlebox@sigcomm" : ['y',"Proceedings of the YEAR ACM SIGCOMM Workshop on Hot topics in Middleboxes and Network Function Virtualization (HotMiddlebox@SIGCOMM)"],
     "ndm@sc" : ['o',"Proceedings of the OCCURENCE International Workshop on Network-Aware Data Management (NDM@SC)"],
     "raid" : ['o',"Proceedings of the OCCURENCE International Symposium on Research in Attacks, Intrusions, and Defenses(RAID)"],
+    "bs" : ['y',"Proceedings of the YEAR Workshop on Buffer Sizing"],
+    "ancs" : ['y',"Proceedings of the YEAR ACM/IEEE Symposium on Architectures for Networking and Communications Systems (ANCS)"],
 }
 
 SHORTCONF = {
@@ -277,7 +279,7 @@ for occ in range (6,18):
     y = 1997 + (occ-6)*2
     F.write(make_asplos("hotos",y,occ))
 
-for occ in range (6,17):
+for occ in range (6,20):
     y = 2007 + (occ-6)
     F.write(make_asplos("hotnets",y,occ))
 
@@ -440,6 +442,8 @@ annual_year("middleware",2000,2020)
 annual_year("adms@vldb",2000,2020)
 annual_year("globecom",2017,2020)
 annual_occ("raid",4,2001,MAXYEAR)
+annual_year("bs",2019,2020)
+annual_year("ancs",2016,MAXYEAR)
 
 #crazy ones:
 annual_year("iwmm",1992,1996)
