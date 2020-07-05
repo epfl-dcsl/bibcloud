@@ -128,7 +128,7 @@ CONF = {
     "raid" : ['o',"Proceedings of the OCCURENCE International Symposium on Research in Attacks, Intrusions, and Defenses(RAID)"],
     "bs" : ['y',"Proceedings of the YEAR Workshop on Buffer Sizing"],
     "ancs" : ['y',"Proceedings of the YEAR ACM/IEEE Symposium on Architectures for Networking and Communications Systems (ANCS)"],
-}
+"uai" :['o',"Proceedings of the OCCURENCE Conference on Uncertainty in Artificial Intelligence (UAI)"]}
 
 SHORTCONF = {
     'usenix' : 'USENIX ATC'
@@ -444,6 +444,7 @@ annual_year("globecom",2017,2020)
 annual_occ("raid",4,2001,MAXYEAR)
 annual_year("bs",2019,2020)
 annual_year("ancs",2016,MAXYEAR)
+annual_occ("uai",26,2010,2020)
 
 #crazy ones:
 annual_year("iwmm",1992,1996)
