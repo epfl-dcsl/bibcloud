@@ -8,17 +8,17 @@ import sys
 
 global F
 
-#last year should be current year + 1
+#last year should normally be current year + 1
 #use it as the end of range only for conferences that are assumed to happen annually going forward
 
-MAXYEAR  = 2021
+MAXYEAR  = 2022
 
 OCCURENCE_TABLE = [
     "th","st","nd","rd","th","th","th","th","th","th","th"
 ]
 
 ROMAN_TABLE = [
-    "TOO_STUIP_TO_INVENT_ZERO",
+    "TOO_STUPID_TO_INVENT_ZERO",
     "I","II","III","IV","V","VI","VII","VIII","IX","X",
     "XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX",
     "XXI","XXII","XXIII","XXIV","XXV","XXVI","XXVII","XXVIII","XXIX","XXX"
@@ -260,8 +260,8 @@ for occ in range (4,14):
     F.write(make_sosp("osdi",y,occ))
 
 
-annual_occ("isca",17,1990,2022)
-annual_occ("nsdi",1,2004,2022)
+annual_occ("isca",17,1990,MAXYEAR)
+annual_occ("nsdi",1,2004,MAXYEAR)
 annual_occ("pam",8,2007,2020)
 
 annual_year("icc",2000,2019)
@@ -297,7 +297,7 @@ for occ in range (1,16):
 
 annual_occ("imc",1,2001,2016)
 
-for occ in range (1,10):
+for occ in range (1,12):
     y = 2009 + occ
     F.write(make_sigcomm("socc",y))
 
@@ -445,12 +445,13 @@ annual_occ("raid",4,2001,MAXYEAR)
 annual_year("bs",2019,2020)
 annual_year("ancs",2016,MAXYEAR)
 annual_occ("uai",26,2010,2020)
+annual_occ("apnet",1,2017,MAXYEAR)
+
 
 #crazy ones:
 annual_year("iwmm",1992,1996)
 annual_occ("ismm",4,2004,2005)
 annual_year("networking",2010,2019)
-annual_occ("apnet",1,2017,2018)
 annual_occ("oopsla",15,2000,2019)
 
 for occ in range (1,10):

@@ -415,7 +415,7 @@ sub Linearize {
     print "Linearize $f\n";
 
 
-    open (F, $f) || die "could not open $f\n";
+    open (F, $f) || open (F,$f.".tex") || die "could not open $f\n";
     my $paragraph = "";
     my @alllines;
     
