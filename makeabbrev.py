@@ -357,7 +357,7 @@ for y in range (1993,2006):
 
 annual_occ("acsac",10,1994,2017)
 annual_occ("hotsdn",1,2012,2017)
-annual_occ("hotcloud",1,2009,2017)
+annual_occ("hotcloud",1,2009,MAXYEAR)
 
 
 for y in range (1989,2017):
