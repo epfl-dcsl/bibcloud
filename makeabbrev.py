@@ -417,7 +417,7 @@ annual_occ("vldb",26,2000,2020)
 annual_occ("vldb",5, 1979, 1980)
 
 annual_occ("sigcse",42,2011,2012)
-annual_occ("cloud",2,2009,2018)
+annual_occ("cloud",2,2009,MAXYEAR)
 annual_occ("woot",4,2010,2018)
 annual_year("sosr",2015,2019)
 annual_occ("lcn",38,2013,2019)
