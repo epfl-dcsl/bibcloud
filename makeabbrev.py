@@ -289,10 +289,7 @@ for y in range (1993,2018):
 
 annual_occ("ndm@sc",3,2013,2016)
 
-
-for occ in range (1,16):
-    y = 2004 + occ
-    F.write(make_sigcomm("conext",y))
+annual_year("conext",2005,MAXYEAR)
 
 
 annual_occ("imc",1,2001,2016)
