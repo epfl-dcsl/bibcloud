@@ -128,7 +128,9 @@ CONF = {
     "raid" : ['o',"Proceedings of the OCCURENCE International Symposium on Research in Attacks, Intrusions, and Defenses(RAID)"],
     "bs" : ['y',"Proceedings of the YEAR Workshop on Buffer Sizing"],
     "ancs" : ['y',"Proceedings of the YEAR ACM/IEEE Symposium on Architectures for Networking and Communications Systems (ANCS)"],
-"uai" :['o',"Proceedings of the OCCURENCE Conference on Uncertainty in Artificial Intelligence (UAI)"]}
+    "uai" :['o',"Proceedings of the OCCURENCE Conference on Uncertainty in Artificial Intelligence (UAI)"],
+    "usits" : ['o',"Proceedings of the OCCURENCE USENIX Symposium on Internet Technologies and Systems (USITS)"]
+}
 
 SHORTCONF = {
     'usenix' : 'USENIX ATC'
@@ -288,15 +290,10 @@ for y in range (1993,2018):
     F.write(make_sigcomm("sc",y))
 
 annual_occ("ndm@sc",3,2013,2016)
-
 annual_year("conext",2005,MAXYEAR)
-
-
 annual_occ("imc",1,2001,2016)
+annual_year("socc",2010,MAXYEAR)
 
-for occ in range (1,12):
-    y = 2009 + occ
-    F.write(make_sigcomm("socc",y))
 
 for occ in range (1,10):
     y = 2005 + occ
@@ -454,5 +451,9 @@ annual_occ("oopsla",15,2000,2019)
 for occ in range (1,10):
     y = 2001 + occ*2
     F.write(make_sosp("cidr",y,occ))
+
+for occ in range (1,5):
+    y = 1995 + occ*2
+    F.write(make_sosp("usits",y,occ))
 
 F.close()
