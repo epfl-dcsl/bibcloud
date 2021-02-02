@@ -139,7 +139,7 @@ NOACKCONFERENCE = {
 }
 
 
-WORKSHOPS = ["HotOS","KBNets@SIGCOMM"]
+WORKSHOPS = ["HotOS","KBNets@SIGCOMM","APNet"]
 
 ############
 ### globals
