@@ -443,7 +443,7 @@ annual_year("bs",2019,2020)
 annual_year("ancs",2016,MAXYEAR)
 annual_occ("uai",26,2010,2020)
 annual_occ("apnet",1,2017,MAXYEAR)
-annual_year("ccs",2010,MAXYEAR)
+annual_year("ccs",2005,MAXYEAR)
 annual_occ("eurosec",7,2014,MAXYEAR)
 
 #crazy ones:
