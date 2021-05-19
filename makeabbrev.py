@@ -132,7 +132,8 @@ CONF = {
     "uai" :['o',"Proceedings of the OCCURENCE Conference on Uncertainty in Artificial Intelligence (UAI)"],
     "usits" : ['o',"Proceedings of the OCCURENCE USENIX Symposium on Internet Technologies and Systems (USITS)"],
     "ccs" : ['y',"Proceedings of the YEAR ACM SIGSAC Conference on Computer and Communications Security (CCS)"],
-    "eurosec" : ['o',"Proceedings of the OCCURENCE European Workshop on Systems Security (EUROSEC)"]
+    "eurosec" : ['o',"Proceedings of the OCCURENCE European Workshop on Systems Security (EUROSEC)"],
+    "opodis" : ['o',"Proceedings of the OCCURENCE International Conference on Principles of Distributed Systems (OPODIS)"]
 }
 
 SHORTCONF = {
@@ -260,7 +261,7 @@ for occ in range (1,32):
 
 F.write(make_sosp("osdi",1996,2))
 F.write(make_sosp("osdi",1999,3))
-for occ in range (4,14):
+for occ in range (4,15):
     y = 2000 + (occ-4)*2
     F.write(make_sosp("osdi",y,occ))
 
@@ -445,6 +446,7 @@ annual_occ("uai",26,2010,2020)
 annual_occ("apnet",1,2017,MAXYEAR)
 annual_year("ccs",2005,MAXYEAR)
 annual_occ("eurosec",7,2014,MAXYEAR)
+annual_occ("opodis",10,2006,MAXYEAR)
 
 #crazy ones:
 annual_year("iwmm",1992,1996)
