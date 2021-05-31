@@ -364,7 +364,7 @@ for y in range (1989,2017):
 annual_occ("ipdps",24,2010,2021)
 annual_occ("icde",31,2015,2017)
 annual_occ("hotdep",2,2006,2016)
-annual_occ("dsn",36,2006,2017)
+annual_occ("dsn",36,2006,MAXYEAR)
 annual_occ("vee",1,2005,2016)
 annual_occ("wmcsa",4,2002,2004)
 annual_occ("iccd",23,2005,2015)
