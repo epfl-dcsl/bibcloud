@@ -172,20 +172,20 @@ def load_references(bibname):
     global gBibStyle
 
     if (not os.path.isfile(bibname)):
-        print "FATAL -- File "+bibname+" does not exist"
+        print("FATAL -- File "+bibname+" does not exist")
         sys.exit(1)
 
-    print "bibcloud: parsing ",bibname
+    print("bibcloud: parsing ",bibname)
     lines = [line.strip() for line in open(bibname)]
 
     BibSyle = ""
     bibstyleline = [x for x in lines if x.find("\\bibstyle")>=0]
-    print "BIBSTYLE is ",bibstyleline
+    print("BIBSTYLE is ",bibstyleline)
     if len(bibstyleline)==1:
         x = bibstyleline[0].split("{")
         x = x[1].split("}")
         gBibStyle = x[0]
-        print "BIBSTYLE (stipped)",gBibStyle
+        print("BIBSTYLE (stipped)",gBibStyle)
 
 
     lines =  [find_citation(line) for line in lines]
@@ -207,7 +207,7 @@ def strip_comment(l):
 
 
 def find_revalias(c):
-    if REVALIAS.has_key(c):
+    if c in REVALIAS:
         return REVALIAS[c]
     else:
         return c
@@ -226,23 +226,23 @@ def update_dblp(citations,latex_backmap):
             if child.tag in valid_tags:
                 DBLP_article["DBLP:"+child.attrib['key']] = child
     except:
-        print "bibcloud: No cache file found...fetching (if the problem persists, delete",LOCALFILES['cache']
+        print("bibcloud: No cache file found...fetching (if the problem persists, delete",LOCALFILES['cache'])
 
     foreign_citations = [c for c in citations if not c.find("DBLP:")==0]
-    missing_citations = [c for c in citations if not DBLP_article.has_key(c) and c.find("DBLP:")==0]
+    missing_citations = [c for c in citations if not c in DBLP_article and c.find("DBLP:")==0]
 
-    print "bibcloud:",num_children,"cached entries;",len(missing_citations)," missing citations to be fetched;",len(foreign_citations),"handled manually"
+    print("bibcloud:",num_children,"cached entries;",len(missing_citations)," missing citations to be fetched;",len(foreign_citations),"handled manually")
 
-    #print "DEBUG MISSING CITATIONS", missing_citations
-    #print "FOREIGN CITATIONS",foreign_citations
+    #print("DEBUG MISSING CITATIONS", missing_citations)
+    #print("FOREIGN CITATIONS",foreign_citations)
 
     if len(missing_citations)==0:
         return
 
     for c in missing_citations:
         key = c[5:]
-        print "bibcloud: fetching",c,"for ",latex_backmap[c]
-        print "CURL ... curl https://dblp.uni-trier.de/rec/"+key+".xml"
+        print("bibcloud: fetching",c,"for ",latex_backmap[c])
+        print("CURL ... curl https://dblp.uni-trier.de/rec/"+key+".xml")
         os.system("curl https://dblp.uni-trier.de/rec/"+key+ ".xml >.bibcloud/tmp.xml")
         if os.path.getsize(".bibcloud/tmp.xml") >0:
 
@@ -254,13 +254,13 @@ def update_dblp(citations,latex_backmap):
                     newtree = ET.parse(".bibcloud/tmp.xml")
                     root.insert(num_children,newtree.getroot()[0])
                 num_children = num_children + 1
-                print "Updating cache ..."
+                print("Updating cache ...")
                 tree.write(".bibcloud/DBLP.xml")
             except:
                 os.system("mv .bibcloud/tmp.xml .bibcloud/error.xml")
-                print "ERROR in XML parsing ... see file ./bibcloud/error.xml"
+                print("ERROR in XML parsing ... see file ./bibcloud/error.xml")
         else:
-                print "FETCH of ",key," failed..."
+                print("FETCH of ",key," failed...")
         time.sleep(2)
 
 
@@ -292,9 +292,9 @@ def author_trim(a):
     x = a.split(' ')
     lastword = x[len(x)-1]
     if (lastword[0:2] == '00'):
-        print "AUTHOR TRIM",x,lastword
+        print("AUTHOR TRIM",x,lastword)
         b =  ' '.join(x[0:len(x)-1])
-        print "AUTHOR2 ",b
+        print("AUTHOR2 ",b)
         return b
     else:
         return a
@@ -305,15 +305,15 @@ def html_to_bibtex2(h):
     try:
         return str(h)
     except:
-        print "DEBUG: HTML conversion ",h.encode('utf-8')
+        print("DEBUG: HTML conversion ",h.encode('utf-8'))
         x = ""
         for c in h:
             c2 = c.encode('utf-8')
-            if HTML_TO_BIB.has_key(c):
+            if c in HTML_TO_BIB:
                 x = x + HTML_TO_BIB[c]
             else:
                 x = x + c
-        print "DEBUG: HTML conversion ",h.encode('utf-8')," --> ",x.encode('utf-8')
+        print("DEBUG: HTML conversion ",h.encode('utf-8')," --> ",x.encode('utf-8'))
         return x.encode('utf-8')
 
 
@@ -327,7 +327,7 @@ def escape_percent(s):
     x = s.find("%")
     if x>=0:
         s2 = s[:x] + "\%" + escape_percent(s[x+1:])
-        print "ESCAPING%: ",s,s2
+        print("ESCAPING%: ",s,s2)
         return s2
     else:
         return s
@@ -338,7 +338,7 @@ def escape_percent_amp(s):
 
     y = s.find("\\&")
     if y>=0:
-        print "ESCAPING - skip \\&:",s 
+        print("ESCAPING - skip \\&:",s )
         return s[:y+2] + escape_percent_amp(s[y+2:])
 
     x = s.find("%")
@@ -346,11 +346,11 @@ def escape_percent_amp(s):
 
     if x>=0 and (x<y or y<0):
         s2 = s[:x] + "\%" + escape_percent_amp(s[x+1:])
-        print "ESCAPING%: ",s,s2
+        print("ESCAPING%: ",s,s2)
         return s2
     elif y>=0:
         s2 = s[:y] + "\&" + escape_percent_amp(s[y+1:])
-        print "ESCAPING&: ",s,s2
+        print("ESCAPING&: ",s,s2)
         return s2
     else:
         return s
@@ -369,7 +369,7 @@ def output_doi_ee(url):
 #    r = "   url = {"+url+"},\n"
     r =""
     if doi == url:
-        #print "DOI: ",url
+        #print("DOI: ",url)
         return r+"  "+"ee = {"+escape_percent(url)+"},\n"
     else:
         return r+"  "+"doi = {"+doi+"},\n"
@@ -380,15 +380,15 @@ def output_doi_ee(url):
 #################### main  ########################
 ###################################################
 # process bib file from ARVG
-print "bibcloud: This is bibcloud ... Use at your own risk ... see bibcloud.py source for documentation"
+print("bibcloud: This is bibcloud ... Use at your own risk ... see bibcloud.py source for documentation")
 
 
 if not os.path.exists(".bibcloud"):
     os.mkdir(".bibcloud")
 
 latex_citations = load_references(sys.argv[1] + ".aux")
-print "bibcloud:",len(latex_citations),"unique citations in",sys.argv[1]+".aux"
-#print "DEBUG latex_citations",len(latex_citations),"citations = ",latex_citations
+print("bibcloud:",len(latex_citations),"unique citations in",sys.argv[1]+".aux")
+#print("DEBUG latex_citations",len(latex_citations),"citations = ",latex_citations)
 
 
 if os.path.isfile(LOCALFILES['alias']):
@@ -398,13 +398,13 @@ if os.path.isfile(LOCALFILES['alias']):
     for l in lines:
         x = l.split()
         if len(x)>=2 and x[1].find("DBLP:")>=0:
-            #print "found alias ",x[0],x[1]
+            #print("found alias ",x[0],x[1])
             ALIAS[x[0]] = x[1]
             REVALIAS[x[1]] = x[0]
         elif len(x)>0:
-            print "Alias parsing - bad line : ",x
+            print("Alias parsing - bad line : ",x)
 else:
-    print "no alias file (",LOCALFILES['alias'],")!"
+    print("no alias file (",LOCALFILES['alias'],")!")
 
 
 if os.path.isfile(LOCALFILES['titlefix']):
@@ -414,20 +414,20 @@ if os.path.isfile(LOCALFILES['titlefix']):
         x = l.split("|")
         if len(x)==2:
             TITLESUB[x[0]] = x[1]
-            #print "TITLE substitiution",x[0],x[1]
+            #print("TITLE substitiution",x[0],x[1])
 
-print "bibcloud:",len(ALIAS),"aliases from",LOCALFILES['alias'],"and",len(TITLESUB),"title substitutions from",LOCALFILES['titlefix']
+print("bibcloud:",len(ALIAS),"aliases from",LOCALFILES['alias'],"and",len(TITLESUB),"title substitutions from",LOCALFILES['titlefix'])
 
-dblp_citations = [ALIAS[c] if ALIAS.has_key(c) else c for c in latex_citations]
-#print "DEBUG dblp_citations",dblp_citations
+dblp_citations = [ALIAS[c] if c in ALIAS else c for c in latex_citations]
+#print("DEBUG dblp_citations",dblp_citations)
 
-rev_citations_check = [c for c in latex_citations if REVALIAS.has_key(c)]
+rev_citations_check = [c for c in latex_citations if c in REVALIAS]
 if len(rev_citations_check)>0:
-    print "bibcloud: FATAL citations cannot be used both aliased and non-aliased",rev_citations_check
+    print("bibcloud: FATAL citations cannot be used both aliased and non-aliased",rev_citations_check)
 
 
 latex_backmap  = {key: find_revalias(key)  for key in dblp_citations}
-#print "DEBUG latex_backmap=",latex_backmap
+#print("DEBUG latex_backmap=",latex_backmap)
 
 update_dblp(dblp_citations,latex_backmap)
 
@@ -448,10 +448,10 @@ F.write("%%% DO NOT EDIT\n\n\n")
 
 # generate dblp.bib file from XML
 for c in dblp_citations:
-    if DBLP_article.has_key(c):
+    if c in DBLP_article:
         xml = DBLP_article[c]
         if xml.tag not in valid_tags:
-            print "bibcloud FATAL unkown tag"
+            print("bibcloud FATAL unkown tag")
             sys.exit(1)
 
         fieldlist = DBLP_fieldlist[xml.tag]
@@ -472,11 +472,11 @@ for c in dblp_citations:
         F.write("  author = {"+  " and ".join(authorlist) + "},\n")
 
         for a in xml:
-            if fieldlist.has_key(a.tag):
+            if a.tag in fieldlist:
                 if fieldlist[a.tag] == 'id':
                     F.write("  "+a.tag+" = {"+html_to_bibtex(a.text)+"},\n")
                 elif fieldlist[a.tag] == 'double':
-                    if a.tag == "title" and TITLESUB.has_key(a.text):
+                    if a.tag == "title" and a.text in TITLESUB:
                         F.write("  "+a.tag+" = {{"+escape_percent_amp(TITLESUB[a.text])+"}},\n")
                     else:
                         F.write("  "+a.tag+" = {{"+escape_percent_amp(html_to_bibtex(a.text))+"}},\n")
@@ -485,7 +485,7 @@ for c in dblp_citations:
                         F.write(output_doi_ee(a.text))
                         processedEE = 1
                 else:
-                    print "BAD code",fieldlist[a.tag]
+                    print("BAD code",fieldlist[a.tag])
                     sys.exit()
         if xml.tag == "article":
             journal = xml.find('journal').text
@@ -495,14 +495,14 @@ for c in dblp_citations:
             year = xml.find('year').text[2:]
             booktitle = xml.find('booktitle').text
             if booktitle.find(" ") >0 or booktitle == "3PGCIC" or booktitle == "INFLOW@SOSP":
-                if NOACKCONFERENCE.has_key(booktitle):
+                if booktitle in NOACKCONFERENCE:
                     booktitle = NOACKCONFERENCE[booktitle]
                     if booktitle.find(" ")>0:
                         F.write("  booktitle = \""+booktitle+"\",\n")
                     else:
                         F.write("  booktitle = "+booktitle+year+",\n")
                 else:
-                    print "WARNING -- Unknown conference",booktitle
+                    print("WARNING -- Unknown conference",booktitle)
                     F.write("  booktitle = \""+booktitle+"\",\n")
                     # sys.exit(1)
             else:
@@ -510,13 +510,13 @@ for c in dblp_citations:
 
             if (booktitle in WORKSHOPS) or (xml.tag=="incollection") : 
                 F.write("  keywords = {workshop},\n")
-                print booktitle,"in workshop!",c
+                print(booktitle,"in workshop!",c)
 
         if c != latex_backmap[c]:
              F.write("  bibsource = {DBLP alias: "+c+"}\n")
         F.write("}\n")
 
-print "bibcloud: done"
+print("bibcloud: done")
 
 
 
