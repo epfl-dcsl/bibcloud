@@ -292,9 +292,9 @@ def author_trim(a):
     x = a.split(' ')
     lastword = x[len(x)-1]
     if (lastword[0:2] == '00'):
-        print("AUTHOR TRIM",x,lastword)
+#        print("AUTHOR TRIM",x,lastword)
         b =  ' '.join(x[0:len(x)-1])
-        print("AUTHOR2 ",b)
+#        print("AUTHOR2 ",b)
         return b
     else:
         return a
