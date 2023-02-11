@@ -296,7 +296,7 @@ for y in range (1993,2018):
 
 annual_occ("ndm@sc",3,2013,2016)
 annual_year("conext",2005,MAXYEAR)
-annual_occ("imc",1,2001,2016)
+annual_occ("imc",1,2001,MAXYEAR)
 annual_year("socc",2010,MAXYEAR)
 
 
