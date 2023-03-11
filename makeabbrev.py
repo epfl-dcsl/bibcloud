@@ -134,7 +134,10 @@ CONF = {
     "ccs" : ['y',"Proceedings of the YEAR ACM SIGSAC Conference on Computer and Communications Security (CCS)"],
     "eurosec" : ['o',"Proceedings of the OCCURENCE European Workshop on Systems Security (EUROSEC)"],
     "opodis" : ['o',"Proceedings of the OCCURENCE International Conference on Principles of Distributed Systems (OPODIS)"],
-    "icse" : ['o',"Proceedings of the OCCURENCE International Conference on Software Engineering (ISCE)"]
+    "icse" : ['o',"Proceedings of the OCCURENCE International Conference on Software Engineering (ISCE)"],
+    "euros&p" : ['y',"Proceedings of the YEAR IEEE European Symposium on Security and Privacy (Euro S\&P)"],
+    "asiaccs" : ['y',"Proceedings of the YEAR ACM Asia Conference on Computer and Communications Security (ASIA CCS)"],
+    "dmvia" : ['o',"Proceedings of the OCCURENCE International Conference on Detection of Intrusions and Malware, and Vulnerability Assessment (DMVIA)"]
 }
 
 SHORTCONF = {
@@ -403,7 +406,7 @@ annual_year("ndss",1995,MAXYEAR)
 annual_occ("popl",15,1988,2018)
 
 F.write(make_sosp("uss",1996,6))
-annual_occ("uss",7,1998,2020)
+annual_occ("uss",7,1998,MAXYEAR)
 
 
 annual_occ("stoc",1,1969,2018)
@@ -449,6 +452,8 @@ annual_year("ccs",2005,MAXYEAR)
 annual_occ("eurosec",7,2014,MAXYEAR)
 annual_occ("opodis",10,2006,MAXYEAR)
 annual_occ("icse",2,1976,1977)
+annual_year("asiaccs",2017,MAXYEAR)
+annual_occ("dmvia",12,2015,MAXYEAR)
 
 #crazy ones:
 annual_year("iwmm",1992,1996)
@@ -463,5 +468,8 @@ for occ in range (1,10):
 for occ in range (1,5):
     y = 1995 + occ*2
     F.write(make_sosp("usits",y,occ))
+
+
+annual_year("euros&p",2016,MAXYEAR)
 
 F.close()
