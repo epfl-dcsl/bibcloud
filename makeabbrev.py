@@ -137,7 +137,7 @@ CONF = {
     "icse" : ['o',"Proceedings of the OCCURENCE International Conference on Software Engineering (ISCE)"],
     "euros&p" : ['y',"Proceedings of the YEAR IEEE European Symposium on Security and Privacy (Euro S\&P)"],
     "asiaccs" : ['y',"Proceedings of the YEAR ACM Asia Conference on Computer and Communications Security (ASIA CCS)"],
-    "dmvia" : ['o',"Proceedings of the OCCURENCE International Conference on Detection of Intrusions and Malware, and Vulnerability Assessment (DMVIA)"]
+    "dimva" : ['o',"Proceedings of the OCCURENCE International Conference on Detection of Intrusions and Malware, and Vulnerability Assessment (DMVIA)"]
 }
 
 SHORTCONF = {
@@ -453,7 +453,7 @@ annual_occ("eurosec",7,2014,MAXYEAR)
 annual_occ("opodis",10,2006,MAXYEAR)
 annual_occ("icse",2,1976,1977)
 annual_year("asiaccs",2017,MAXYEAR)
-annual_occ("dmvia",12,2015,MAXYEAR)
+annual_occ("dimva",12,2015,MAXYEAR)
 
 #crazy ones:
 annual_year("iwmm",1992,1996)
