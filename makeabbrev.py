@@ -269,6 +269,10 @@ for occ in range (4,15):
     y = 2000 + (occ-4)*2
     F.write(make_sosp("osdi",y,occ))
 
+for y in range(2021,MAXYEAR):
+    occ = y - 2021 + 15
+    F.write(make_sosp("osdi",y,occ))
+
 
 annual_occ("isca",17,1990,MAXYEAR)
 annual_occ("nsdi",1,2004,MAXYEAR)
