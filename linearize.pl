@@ -36,7 +36,7 @@ sub ClosingBrace {
     my $p = shift;
     my $pos = shift;    
     my $count = 1;
-    substr($p,$pos,1) eq "{" || die "not an opening brace \n";
+    substr($p,$pos,1) eq "{" || die "not an opening brace".$p."\n";
 
     $pos++;
     while ($pos < length($p)) {
@@ -230,6 +230,7 @@ sub Spill {
 
 
 	    while (($start=index($p,"~\\citeName{"))>=0) {
+		print STDERR "Citation ".$p;
 		$openbrace = $start + length("~\\citeName");
 		$end =  ClosingBrace($p,$openbrace);
 		$end >0 || die "assert no end\n";
@@ -237,26 +238,21 @@ sub Spill {
 		print STDERR "CiteName ".substr($p,$end,$end2-$end-2) . "\n";
 		$p = substr($p,0,$start) . " [CITENAME]" . substr($p,$end2+1);
 	    }
-
-	    # keep 2nd arg
-	    while (($start=index($p,"\\camera{"))>=0) {
-		$openbrace = $start + length("\\camera");
-		$end =  ClosingBrace($p,$openbrace);
-		$end >0 || die "assert no end\n";
-		$end2 = ClosingBrace($p,$end+1);
-		print STDERR "Camrea ".substr($p,$end+2,$end2-$end-2) . "\n";
-		$p = substr($p,0,$start) . " ".substr($p,$end+2,$end2-$end-2) . " ".substr($p,$end2+1);
-	    }
 	    
 	    $p = DropCommand($p,"\\emph");
 	    $p = DropCommand($p,"\\texttt");
 	    $p = DropCommand($p,"\\textit");
+	    $p = DropCommand($p,"\\camera");
+	    $p = DropCommand($p,"\\patch");
+	    $p = DropCommand($p,"\\edb");
+
 
 
 	    $p = ReplaceCommand($p,"\\label"," [LABEL]");
 	    $p = ReplaceCommand($p,"\\includegraphics"," [PICTURE]");
 	    $p = ReplaceCommand($p,"\\ignore","");
-	    $p = ReplaceCommand($p,"\\edb","");
+	    $p = ReplaceCommand($p,"\\sout","");
+
 
 		$p = ReplaceString($p,"\\eg~","e.g., ");
 		$p = ReplaceString($p,"\\ie~","i.e., ");
@@ -269,7 +265,12 @@ sub Spill {
 		$p = ReplaceString($p,"\\noindent","");
 		$p = ReplaceString($p,"\\centering","");
 		$p = ReplaceString($p,"\\item","\n[ITEM:]"); 
-			
+
+
+		$p = ReplaceString($p,"\\system","TYCHE");
+		$p = ReplaceString($p,"\\commodity","software systems");
+
+
 	} elsif ($option eq "acm") { 
 	    while ($p =~/\\comment{/) { 
 		$start = index($p,"\\comment{");

@@ -12,7 +12,7 @@ global F
 #last year should normally be current year + 1
 #use it as the end of range only for conferences that are assumed to happen annually going forward
 
-MAXYEAR  = 2023
+MAXYEAR  = 2024
 
 OCCURENCE_TABLE = [
     "th","st","nd","rd","th","th","th","th","th","th","th"

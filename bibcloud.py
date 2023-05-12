@@ -319,6 +319,11 @@ def html_to_bibtex2(h):
 
 def html_to_bibtex(s):
     x = html_to_bibtex2(s)
+    if x.find("μ")>=0:
+        print("XXX FOUND")
+    x.replace("μ","FOOBAR") #{$\\upmu{}$\\xspace}")
+    if s.find("SCOPE")>0:
+        print("XXX DEBUG ",x,s)
     x = x.replace("&","{\&}")
     return x
 
