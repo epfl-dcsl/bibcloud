@@ -427,50 +427,59 @@ sub Linearize {
     close(F);
 
     for ($i=0;$i<$nlines;$i++) { 
-	$line = $alllines[$i];
-	chop($line);
-	#print STDERR "XXX line=$line\n";
-	### remove comment at end of lines
-	### bug - misses % on a line that has an \% first
-	my $x = index($line,"%",0);
-	if ($x>=0) {
-	    if ($x==0) { 
-		$line = "";  #blank
-	    } elsif (index($line,"\\%",0) <0) { 
-		$line = substr($line,0,$x);
-	    } else {
-		# \% - rare
-		print STDERR "comment\% ; kept it\n";
-	    }
-	}
+		$line = $alllines[$i];
+		chop($line);
+		#print STDERR "XXX line=$line\n";
+		### remove comment at end of lines
+		### bug - misses % on a line that has an \% first
+		my $x = index($line,"%",0);
+		if ($x>=0) {
+			if ($x==0) { 
+			$line = "";  #blank
+			} elsif (index($line,"\\%",0) <0) { 
+			$line = substr($line,0,$x);
+			} else {
+			# \% - rare
+			print STDERR "comment\% ; kept it\n";
+			}
+		}
 
-	### remove trailing blanks
-	while (substr($line,length($line)-1,1) eq " ") {
-	    $line = substr($line,0,length($line)-1);
-	}
-	if (length($line) >0) { 
-	    #### remove leading blanks
-	    while (substr($line,0,1) eq " ") { 
-		$line = substr($line, 1,length($line)-1);
-	    }
-	}
-	
-	if (length($line)==0) { 
-	    # blank lines are separators;
-	    Spill($paragraph) ;
-	    $paragraph = "";
-	} elsif (substr($line,length($line)-2,2) eq "\\\\") {
-	    # lines that end with \\ are separators
-	    Spill($paragraph . " " . $line);
-	    $paragraph = "";
-	} else {
-	    # concatenate; same paragraph
-	    if ($paragraph eq "") { 
-		$paragraph = $line;
-	    } else { 
-		$paragraph = $paragraph . " " . $line;
-	    }
-	}
+		### remove trailing blanks
+		while (substr($line,length($line)-1,1) eq " ") {
+			$line = substr($line,0,length($line)-1);
+		}
+
+		# remove double spaces
+		$x = index($line,"  ",0);
+		while ($x>0) {
+			$line = substr($line,0,$x+1) . substr($line,$x+2,length($line));
+			print STDERR "trimming double space ".$x."\n".$line."\n";
+			$x = index($line,"  ",0);
+		}
+
+		if (length($line) >0) { 
+			#### remove leading blanks
+			while (substr($line,0,1) eq " ") { 
+			$line = substr($line, 1,length($line)-1);
+			}
+		}
+		
+		if (length($line)==0) { 
+			# blank lines are separators;
+			Spill($paragraph) ;
+			$paragraph = "";
+		} elsif (substr($line,length($line)-2,2) eq "\\\\") {
+			# lines that end with \\ are separators
+			Spill($paragraph . " " . $line);
+			$paragraph = "";
+		} else {
+			# concatenate; same paragraph
+			if ($paragraph eq "") { 
+			$paragraph = $line;
+			} else { 
+			$paragraph = $paragraph . " " . $line;
+			}
+		}
 
     }
     Spill($paragraph);   

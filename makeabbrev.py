@@ -289,7 +289,8 @@ for y in range(2008,2022):
     F.write(make_asplos("asplos",y,occ))
     occ = occ +1
 
-for occ in range (6,18):
+# careful: SOSP goes annual; HotOS might too
+for occ in range (6,20):
     y = 1997 + (occ-6)*2
     F.write(make_asplos("hotos",y,occ))
 
