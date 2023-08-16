@@ -320,7 +320,7 @@ for y in range (1990,2018):
     F.write(make_sigcomm("pldi",y))
 
 
-for y in range(2006,2022):
+for y in range(2006,MAXYEAR):
     F.write(make_sigcomm("eurosys",y))
 
 for y in range (2010,2011):
