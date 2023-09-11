@@ -138,7 +138,8 @@ CONF = {
     "euros&p" : ['y',"Proceedings of the YEAR IEEE European Symposium on Security and Privacy (Euro S\&P)"],
     "asiaccs" : ['y',"Proceedings of the YEAR ACM Asia Conference on Computer and Communications Security (ASIA CCS)"],
     "dimva" : ['o',"Proceedings of the OCCURENCE International Conference on Detection of Intrusions and Malware, and Vulnerability Assessment (DMVIA)"],
-    "ISPA/BDCloud/SocialCom/SustainCom" : ['y',"Proceedings of the YEAR IEEE International Symposium on Parallel and Distributed Processing with Applications (ISPA)"]
+    "ISPA/BDCloud/SocialCom/SustainCom" : ['y',"Proceedings of the YEAR IEEE International Symposium on Parallel and Distributed Processing with Applications (ISPA)"],
+    "mlsys" : ['o',"Proceedings of the OCCURENCE Conference on Machine Learning and Systems (MLSys) "]
 
 }
 
@@ -479,4 +480,5 @@ for occ in range (1,5):
 
 annual_year("euros&p",2016,MAXYEAR)
 annual_year("ISPA/BDCloud/SocialCom/SustainCom",2021,2022)
+annual_occ("mlsys",1,2018,MAXYEAR)
 F.close()

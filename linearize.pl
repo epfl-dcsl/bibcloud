@@ -267,8 +267,10 @@ sub Spill {
 		$p = ReplaceString($p,"\\item","\n[ITEM:]"); 
 
 
-		$p = ReplaceString($p,"\\system","TYCHE");
+		$p = ReplaceString($p,"\\system","SIRD");
 		$p = ReplaceString($p,"\\commodity","software systems");
+		$p = ReplaceString($p,"\\overcommitname","informed overcommitment");
+		$p = ReplaceString($p,"\\Overcommitname","Informed overcommitment");
 
 
 	} elsif ($option eq "acm") { 
