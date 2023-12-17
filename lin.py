@@ -1,9 +1,31 @@
 #!/usr/bin/python3
 
-# 2023-12 -- rewrite from the totally obsolete perl script
+###################################
+# Linearlize all latex files into a single file. 
+#  - strips lines that start with %
+#  - paragraph on a single line (necessary for including in word)
+#
+# Usage 
+#   ./scripts/lin.py  <top-file.tex> [OPTION]
+#  
+# Base mode - when there are no option
+#  - generate a file arxiv.tex suitable for upload into arxiv, TOCS, etc
+#  - note: does not inline the bibliography
+#  - note: does not renumber the figures
+#  - normally called by the target "make arxiv"
+
+# Mode #2:  OPTION = word  
+#  - applies the logic of base mode
+#  - further remove Citations, labels and refs
+#  - output file is called latexforword.txt
+#  - normally called by the target "make spell"
+
+# Revision history
+#  - 2023-12 -- rewrite from the totally obsolete perl script
 
 import sys,os
 
+# flattens tree of strings into a list of strings
 def flatten(tree,outlist):
     for l in tree:
         if isinstance(l,list):
@@ -12,6 +34,7 @@ def flatten(tree,outlist):
             outlist.append(l)
     return outlist
 
+# called to expand \\input{filename} (if present) during parsing
 def expandlineinput(l):
     par = []
     x = l.find("\\input{")
@@ -25,9 +48,9 @@ def expandlineinput(l):
             print("Expanding input",filename)
             tree = readfile(filename)
             tree = [expandlineinput(l) for l in tree]
-            par.append("\n%BEGIN()"+filename+")\n")
+            par.append("\n%BEGIN("+filename+")\n")
             par.append(tree)
-            par.append("\n%END()"+filename+")\n")
+            par.append("\n%END("+filename+")\n")
 
         else:
             sys.exit("unbalanced filename"+l)
@@ -35,6 +58,12 @@ def expandlineinput(l):
         x = l.find("\\input{")
     par.append(l)
     return par
+
+# Read and parse latex input file, applying the following logic
+#  - remove all comments
+#  - strip leading and trailing blanks
+#  - merge consective non-blank lines (before removal of comments) into a single line that corresponds to the paragraph
+#  - split paragraphs if lines ends with  \\
 
 def readfile(filename):
     if os.path.isfile(filename):
@@ -89,6 +118,12 @@ COMMANDSUB = {
      "\\edb{" : "SELF"
 }
 
+KEYWORDSUB = {
+    "\\system" : "SYSTEM",
+    "\\overcommitname" : "informed overcommitment",
+    "\\Overcommitname" : "Informed overcommitment"
+
+}
 def ppword(l):
     for c in COMMANDSUB:
         x = l.find(c)
@@ -102,6 +137,11 @@ def ppword(l):
                     sub = l[0:x]+COMMANDSUB[c]+l2[y+1:]
                 return ppword(sub)
 
+    for c in KEYWORDSUB: 
+        x = l.find(c)
+        if x>=0:
+            sub = l[0:x]+KEYWORDSUB[c]+l[x+len(c):]
+            return ppword(sub)
     return l
 
 

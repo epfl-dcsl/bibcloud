@@ -13,6 +13,9 @@
 # Mode #2 - inlining for TOCS submission
 #  - inlines the bibliography (todo) 
 #  - renumbers the figures (todo)
+# UPDATE 2023-12
+#  - this too should become obsolete soon; replaced by lin.py for practical uses
+
 ##################################
 use strict;
 
