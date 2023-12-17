@@ -427,6 +427,7 @@ sub Linearize {
 	 $alllines[$nlines++] = $_;
     }
     close(F);
+	 $alllines[$nlines++] = " ";#fixes end of file conditions 
 
     for ($i=0;$i<$nlines;$i++) { 
 		$line = $alllines[$i];
@@ -435,24 +436,25 @@ sub Linearize {
 		### remove comment at end of lines
 		### bug - misses % on a line that has an \% first
 	
+
+		#lines that start with % don't count at all
 		while (index($line,"%",0)==0) {
-			i = i+1;
-			$line = alllines[$i];
+			$i = $i+1;
+			$line = $alllines[$i];
 			chop($line);
 		}
-		#lines that start with % don't count at all
+
 		my $x = index($line,"%",0);
 		if ($x>=0) {
 			if ($x==0) { 
-			die "NOT HERE";
-			$line = "";  #blank
-		} elsif (index($line,"\\%",0) <0) { 
+				die "NOT HERE";
+			} elsif (index($line,"\\%",0) <0) { 
 			$line = substr($line,0,$x);
-		} else {
-			# \% - rare
-			print STDERR "comment\% ; kept it\n";
+			} else {
+				# \% - rare
+				print STDERR "comment\% ; kept it\n";
+			}
 		}
-
 		
 
 		### remove trailing blanks
@@ -511,34 +513,6 @@ if ($option eq "word") {
     
 
 my $toplevel = shift;
-if ($option eq "roff") {
-    my $aux = $toplevel;
-    $aux =~s/tex/aux/;
-    open (AUX,$aux) || die "Could not open $aux\n";
-    while (<AUX>) { 
-	if (/\\newlabel\{(\S+)}{{(\S+)}{(\S+)\}\}/) { 
-	    print "AUX LABEL $1 | $2 | $3\n";
-	    $label{$1} = $2;
-	}
-    }
-    close(AUX);
-
-    $aux = $toplevel;
-    $aux =~s/tex/bbl/;
-    open (AUX,$aux) || die " could not open bbl\n";
-    while (<AUX>) { 
-	if (/\\bibitem/) {
-	    my $x = index($_,"]");
-	    my $xa = substr($_,length("\\bibitem["),$x-length("\\bibitem["));
-	    my $xb = substr($_,$x+2 );
-	    chop($xb);
-	    chop($xb);
-	    $bibitem{$xb} = $xa;
-	    print "AUX BIB $xa | $xb\n";
-	}
-    }
-    close(AUX);
-}
 
 open (OUT,">latex-all.tex");
 Linearize($toplevel);
