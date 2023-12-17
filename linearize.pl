@@ -274,7 +274,7 @@ sub Spill {
 
 
 	} elsif ($option eq "acm") { 
-	    while ($p =~/\\comment{/) { 
+	    while ($p =~/\\comment\{/) { 
 		$start = index($p,"\\comment{");
 		$end = ClosingBrace($p,$start + length("\\comment"));
 		if ($end>0) { 
@@ -434,17 +434,26 @@ sub Linearize {
 		#print STDERR "XXX line=$line\n";
 		### remove comment at end of lines
 		### bug - misses % on a line that has an \% first
+	
+		while (index($line,"%",0)==0) {
+			i = i+1;
+			$line = alllines[$i];
+			chop($line);
+		}
+		#lines that start with % don't count at all
 		my $x = index($line,"%",0);
 		if ($x>=0) {
 			if ($x==0) { 
+			die "NOT HERE";
 			$line = "";  #blank
-			} elsif (index($line,"\\%",0) <0) { 
+		} elsif (index($line,"\\%",0) <0) { 
 			$line = substr($line,0,$x);
-			} else {
+		} else {
 			# \% - rare
 			print STDERR "comment\% ; kept it\n";
-			}
 		}
+
+		
 
 		### remove trailing blanks
 		while (substr($line,length($line)-1,1) eq " ") {
@@ -507,7 +516,7 @@ if ($option eq "roff") {
     $aux =~s/tex/aux/;
     open (AUX,$aux) || die "Could not open $aux\n";
     while (<AUX>) { 
-	if (/\\newlabel{(\S+)}{{(\S+)}{(\S+)}}/) { 
+	if (/\\newlabel\{(\S+)}{{(\S+)}{(\S+)\}\}/) { 
 	    print "AUX LABEL $1 | $2 | $3\n";
 	    $label{$1} = $2;
 	}
