@@ -48,9 +48,9 @@ def expandlineinput(l):
             print("Expanding input",filename)
             tree = readfile(filename)
             tree = [expandlineinput(l) for l in tree]
-            par.append("\n%BEGIN("+filename+")\n")
+            par.append("%BEGIN("+filename+")")
             par.append(tree)
-            par.append("\n%END("+filename+")\n")
+            par.append("%END("+filename+")")
 
         else:
             sys.exit("unbalanced filename"+l)
@@ -167,9 +167,14 @@ if len(sys.argv)>2 and sys.argv[2]=="word":
 else: 
     outname = "arxiv.tex"
 
+print("Generating "+outname)
 F = open(outname,"w")
+
 wasblank = 0
 for l in tree:
+    while len(l)>=1 and l[0:1]==" ":
+        l = l[1:]
+
     if l=="":
         if wasblank == 0:
             F.write("\n")
