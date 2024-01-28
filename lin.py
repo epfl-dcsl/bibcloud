@@ -59,6 +59,17 @@ def expandlineinput(l):
     par.append(l)
     return par
 
+# 
+def removecomments(l):
+    x = l.find("%")
+    if x<0:
+        return l
+    if l[x-1:x]=="\\":
+        #  \% is not a comment
+        return l[0:x+1] + removecomments(l[x+1:])
+    return l[0:x]
+
+
 # Read and parse latex input file, applying the following logic
 #  - remove all comments
 #  - strip leading and trailing blanks
@@ -78,27 +89,20 @@ def readfile(filename):
     p = []
     tree = []
     for l in lines:
-        x = l.find("%")
         if len(l)==0:    # blank line, new paragraph
             tree.append(" ".join(p))
             tree.append("") # insert blank line to split paragraphs
             p = []
-        elif len(l)>1 and l[len(l)-2:]=="\\\\":  # ends with \\ split
-            print("line ends with \\\\",l)
-            tree.append(" ".join(p))
-            tree.append(l)
-            p = []
-        elif x > 0:
-            if l[x-1:x]=="\\":
-                #  \% is not a comment
-                print("rare \% found")
+        else:
+            l = removecomments(l)
+            if len(l)>1 and l[len(l)-2:]=="\\\\":  # ends with \\ split
+                print("line ends with \\\\",l)
+                tree.append(" ".join(p))
+                tree.append(l)
+                p = []
+            else: 
                 p.append(l)
-            else: # accumulate into same paragraph
-                p.append(l[0:x])
-        elif x<0: 
-            p.append(l)
 
-        #implicitely, x==0: comments are dropped at the beginning of the file but don't break paragraphs
     tree.append(" ".join(p)) 
     return tree
 
@@ -109,17 +113,21 @@ COMMANDSUB = {
     "~\\cite{" : " [CITE]",
     "~\\ref{" : " [REF]",
      "\\S\\ref{" : " [SECREF]",
-     "\\autoref{" : " [AUTOREF]",
+     "\\autoref{" : "[AUTOREF]",
      "\\label{" : " [LABEL]",
      "\\emph{" : "SELF",
      "\\texttt{" : "SELF",
      "\\textit{" : "SELF",
      "\\camera{" : "SELF",
-     "\\edb{" : "SELF"
+     "\\edb{" : "SELF",
+     "\\myparagraph{" : "[ "+"SELF"+" :]"
 }
 
 KEYWORDSUB = {
     "\\system" : "SYSTEM",
+    "\\eg" : "e.g.,",
+    "\\ie" : "i.e.,",
+    # paper-specific
     "\\overcommitname" : "informed overcommitment",
     "\\Overcommitname" : "Informed overcommitment"
 
@@ -131,8 +139,11 @@ def ppword(l):
             l2 = l[x+len(c):]
             y = l2.find("}")
             if y>0:
-                if COMMANDSUB[c]=="SELF":
-                    sub = l[0:x]+l2[:y]+l2[y+1:]
+                pos = COMMANDSUB[c].find("SELF")
+                if pos>=0:
+                    prefix = COMMANDSUB[c][:pos]
+                    postfix = COMMANDSUB[c][pos+4:]
+                    sub = l[0:x]+prefix + l2[:y]+ postfix +l2[y+1:]
                 else:
                     sub = l[0:x]+COMMANDSUB[c]+l2[y+1:]
                 return ppword(sub)
