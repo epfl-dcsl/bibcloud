@@ -142,7 +142,8 @@ CONF = {
     "mlsys" : ['o',"Proceedings of the OCCURENCE Conference on Machine Learning and Systems (MLSys) "],
     "uic" : ['y',"Proceedings of the YEAR {IEEE} SmartWorld, Ubiquitous Intelligence {\&} Computing, Advanced {\&} Trusted Computing, Scalable Computing {\&} Communications, Internet of People and Smart City Innovation"],
     "SmartWorld/SCALCOM/UIC/ATC/IOP/SCI" : ['y',"Proceedings of the YEAR {IEEE} SmartWorld, Ubiquitous Intelligence {\&} Computing, Advanced {\&} Trusted Computing, Scalable Computing {\&} Communications, Internet of People and Smart City Innovation"],
-    "sp" : ['o',"Proceedings of the OCCURENCE IEEE Symposium on Security and Privacy (S{\&}P)"]
+    "sp" : ['o',"Proceedings of the OCCURENCE IEEE Symposium on Security and Privacy (S{\&}P)"],
+    "cf" : ['o', "Proceedings of the OCCURENCE ACM International Conference on Computing Frontiers (CF)"]
 
 }
 
@@ -485,7 +486,7 @@ annual_year("euros&p",2016,MAXYEAR)
 annual_year("ISPA/BDCloud/SocialCom/SustainCom",2021,2022)
 annual_occ("mlsys",1,2018,MAXYEAR)
 annual_occ("sp",30,2009,MAXYEAR)
-
+annual_occ("cf",20,2023,2024)
 # hacks
 
 annual_year("uic",2021,2022)
