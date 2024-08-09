@@ -127,6 +127,7 @@ COMMANDSUB = {
      "\\camera{" : "SELF",
      "\\caption{" : "SELF",
      "\\textsf{" : "CAPS",
+     "\\section{" : "CAPS",
      "\\edb{" : "SELF",
      "\\myparagraph{" : "[ "+"SELF"+" :]",
      "\\system{": "SYSTEM",
@@ -142,10 +143,16 @@ KEYWORDSUB = {
     # paper-specific
     "\\overcommitname" : "informed overcommitment",
     "\\Overcommitname" : "Informed overcommitment",
+    # Arm architecture
+    "\\arm" : "ARM",
+    "\\cca" : "CCA",
+    # Risc-V
     "\\riscv" : "RISCV",
-    "\\linux" : "LINUX",
+    "\\mmode" : "M-MODE",
+    "\\keystone" : "KEYSTONE",
     "\\opensbi" : "OPENSBI",
-    "\\mmode" : "M-MODE"
+    # OS
+    "\\linux" : "LINUX"
 }
 
 def ppword(l):
