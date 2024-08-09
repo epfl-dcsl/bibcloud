@@ -1,3 +1,5 @@
+THIS IS OBSOLETE. NO LONGER RUN.  USE LIN.PY INSTEAD
+
 #!/usr/bin/perl -w
 ###################################
 # Linearlize all latex files into a single file. 
@@ -245,6 +247,8 @@ sub Spill {
 	    $p = DropCommand($p,"\\emph");
 	    $p = DropCommand($p,"\\texttt");
 	    $p = DropCommand($p,"\\textit");
+	    $p = DropCommand($p,"\\textsf");
+
 	    $p = DropCommand($p,"\\camera");
 	    $p = DropCommand($p,"\\patch");
 	    $p = DropCommand($p,"\\edb");
@@ -270,7 +274,9 @@ sub Spill {
 		$p = ReplaceString($p,"\\item","\n[ITEM:]"); 
 
 
-		$p = ReplaceString($p,"\\system","SIRD");
+		$p = ReplaceString($p,"\\system","SYSTEM");
+		$p = ReplaceCommand($p,"\\system{}","SYSTEM");
+
 		$p = ReplaceString($p,"\\commodity","software systems");
 		$p = ReplaceString($p,"\\overcommitname","informed overcommitment");
 		$p = ReplaceString($p,"\\Overcommitname","Informed overcommitment");

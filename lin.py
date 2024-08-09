@@ -25,6 +25,9 @@
 
 import sys,os
 
+# global
+inbody = 0
+
 # flattens tree of strings into a list of strings
 def flatten(tree,outlist):
     for l in tree:
@@ -115,32 +118,54 @@ COMMANDSUB = {
      "\\S\\ref{" : " [SECREF]",
      "\\autoref{" : "[AUTOREF]",
      "\\label{" : " [LABEL]",
+     "\\includegraphics{" : " [GRAPHICS]",
+
      "\\emph{" : "SELF",
      "\\texttt{" : "SELF",
      "\\textit{" : "SELF",
+     "\\textbf{" : "SELF",
      "\\camera{" : "SELF",
+     "\\caption{" : "SELF",
+     "\\textsf{" : "CAPS",
      "\\edb{" : "SELF",
-     "\\myparagraph{" : "[ "+"SELF"+" :]"
+     "\\myparagraph{" : "[ "+"SELF"+" :]",
+     "\\system{": "SYSTEM",
+     #paper-specific
 }
 
 KEYWORDSUB = {
     "\\system" : "SYSTEM",
     "\\eg" : "e.g.,",
     "\\ie" : "i.e.,",
+    "\\etc" : "etc.",
+    "\\&" : "&",
     # paper-specific
     "\\overcommitname" : "informed overcommitment",
-    "\\Overcommitname" : "Informed overcommitment"
-
+    "\\Overcommitname" : "Informed overcommitment",
+    "\\riscv" : "RISCV",
+    "\\linux" : "LINUX",
+    "\\opensbi" : "OPENSBI",
+    "\\mmode" : "M-MODE"
 }
+
 def ppword(l):
+    global inbody
+    if inbody == 0:
+        for c in ["\\title{","\\begin{document}"]:
+            x = l.find(c)
+            if x>=0:
+                inbody = 1
+
     for c in COMMANDSUB:
         x = l.find(c)
         if x>=0:
             l2 = l[x+len(c):]
             y = l2.find("}")
-            if y>0:
+            if y>=0:
                 pos = COMMANDSUB[c].find("SELF")
-                if pos>=0:
+                if COMMANDSUB[c]=="CAPS":
+                    sub = l[0:x]+ l2[:y]+l2[y+1:]
+                elif pos>=0:
                     prefix = COMMANDSUB[c][:pos]
                     postfix = COMMANDSUB[c][pos+4:]
                     sub = l[0:x]+prefix + l2[:y]+ postfix +l2[y+1:]
@@ -148,18 +173,24 @@ def ppword(l):
                     sub = l[0:x]+COMMANDSUB[c]+l2[y+1:]
                 return ppword(sub)
 
-    for c in KEYWORDSUB: 
-        x = l.find(c)
-        if x>=0:
-            sub = l[0:x]+KEYWORDSUB[c]+l[x+len(c):]
-            return ppword(sub)
-    return l
+    for cc in KEYWORDSUB: 
+        c2 = cc+"{}"
+        for c in [c2,cc]: 
+            x = l.find(c)
+            if x>=0:
+                sub = l[0:x]+KEYWORDSUB[cc]+l[x+len(c):]
+                return ppword(sub)
+    if inbody >0:
+        return l
+    else:
+        return ""
 
 
 main = sys.argv[1]
 tree = readfile(main)
 tree = [expandlineinput(l) for l in tree]
 tree = flatten(tree,[])
+
 
 if len(sys.argv)>2 and sys.argv[2]=="word":
     tree = [ppword(l) for l in tree]
