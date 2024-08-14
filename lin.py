@@ -109,9 +109,12 @@ def readfile(filename):
     tree.append(" ".join(p)) 
     return tree
 
+
+
+
+
+
 # Substitutions that make it easier to use the MS Word grammar checker
-
-
 COMMANDSUB = {
     "~\\cite{" : " [CITE]",
     "~\\ref{" : " [REF]",
@@ -135,7 +138,6 @@ COMMANDSUB = {
 }
 
 KEYWORDSUB = {
-    "\\system" : "SYSTEM",
     "\\eg" : "e.g.,",
     "\\ie" : "i.e.,",
     "\\etc" : "etc.",
@@ -144,25 +146,61 @@ KEYWORDSUB = {
     "\\overcommitname" : "informed overcommitment",
     "\\Overcommitname" : "Informed overcommitment",
     # Arm architecture
-    "\\arm" : "ARM",
-    "\\cca" : "CCA",
-    # Risc-V
-    "\\riscv" : "RISCV",
-    "\\mmode" : "M-MODE",
-    "\\keystone" : "KEYSTONE",
-    "\\opensbi" : "OPENSBI",
-    # OS
-    "\\linux" : "LINUX"
 }
+
+
+## custom macros
+
+CUSTOMMACROS = {}
+## one day, will figure out regex in python
+def findcustommacros(l):
+    global CUSTOMMACROS
+    x = l.find("\\newcommand{")
+    if x>=0:
+        l2 = l[x+len("\\newcommand{"):]
+        x2 = l2.find("}{")
+        if x2>0:
+            key = l2[0:x2]
+            l3 = l2[x2+2:]
+            for c in ['\\textsc{','\\textsf{']:
+                x3 = l3.find(c)
+                if x3==0:
+                    x4 = l3.find("}")
+                    if x4>0:
+                        value = l3[len(c):x4]
+                        x5 = value.find("\\xspace")
+                        if x5>0:
+                            value = value[0:x4]
+                        if key in KEYWORDSUB:
+                            print("HARD MACRO |"+key+"|"+value+"|")
+                        else:
+                            print("CUSTOM MACROS |"+key+"|"+value+"|"+value.upper())
+                            CUSTOMMACROS[key+"{}"] = value.upper()
+        return findcustommacros(l[x+len("\\newcommand{"):])
+    else: 
+        return l
+
+
+
 
 def ppword(l):
     global inbody
+    global CUSTOMMACROS
     if inbody == 0:
-        for c in ["\\title{","\\begin{document}"]:
+        l = findcustommacros(l)
+        for c in ["\\title","\\begin{document}"]:
             x = l.find(c)
             if x>=0:
                 inbody = 1
+                return ppword(l)
+        return ""
 
+    for cc in CUSTOMMACROS:
+        x = l.find(cc)
+        if x>=0:
+            sub = l[0:x]+CUSTOMMACROS[cc]+l[x+len(cc):]
+            return ppword(sub)
+   
     for c in COMMANDSUB:
         x = l.find(c)
         if x>=0:
@@ -187,10 +225,7 @@ def ppword(l):
             if x>=0:
                 sub = l[0:x]+KEYWORDSUB[cc]+l[x+len(c):]
                 return ppword(sub)
-    if inbody >0:
-        return l
-    else:
-        return ""
+    return l
 
 
 main = sys.argv[1]
