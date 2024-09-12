@@ -82,6 +82,9 @@
 %DCSL
 
 
+\newcommand{\new}[1]{\textcolor{green}{#1}}
+
+
 \newcommand{\edb}[1]{\noindent{{\bf \fbox{EdB:} {\textcolor{red}{\it#1}}}}}
 \newcommand{\george}[1]{\noindent{{\bf \fbox{GP:} {\textcolor{blue}{\it#1}}}}}
 \newcommand{\marios}[1]{\noindent{{\bf \fbox{MK:} {\textcolor{green}{\it#1}}}}}
@@ -89,6 +92,10 @@
 \newcommand{\ag}[1]{\noindent{{\bf \fbox{AG:} {\textcolor{Gray}{\it#1}}}}}
 \newcommand{\sam}[1]{\noindent{{\bf \fbox{Sam:} {\textcolor{cyan}{\it#1}}}}}
 
+
+\makeatletter
+\newcommand{\rawinput}[1]{\@@input #1 }
+\makeatother
 
 
 %make sure to always define in the main latex file

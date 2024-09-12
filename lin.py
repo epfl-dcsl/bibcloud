@@ -133,6 +133,7 @@ COMMANDSUB = {
      "\\section{" : "CAPS",
      "\\edb{" : "SELF",
      "\\myparagraph{" : "[ "+"SELF"+" :]",
+     "\\new{" : "SELF",
      "\\system{": "SYSTEM",
      #paper-specific
 }
@@ -145,6 +146,7 @@ KEYWORDSUB = {
     # paper-specific
     "\\overcommitname" : "informed overcommitment",
     "\\Overcommitname" : "Informed overcommitment",
+    "\\system" : "SYSTEM"
     # Arm architecture
 }
 
