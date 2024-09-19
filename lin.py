@@ -132,7 +132,7 @@ COMMANDSUB = {
      "\\textsf{" : "CAPS",
      "\\section{" : "CAPS",
      "\\edb{" : "SELF",
-     "\\myparagraph{" : "[ "+"SELF"+" :]",
+     "\\myparagraph{" : "["+"SELF"+":]",
      "\\new{" : "SELF",
      "\\system{": "SYSTEM",
      #paper-specific
