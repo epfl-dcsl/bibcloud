@@ -292,7 +292,7 @@ for occ in range (5,13):
     F.write(make_asplos("asplos",y,occ))
 
 occ = 13
-for y in range(2008,2022):
+for y in range(2008,MAXYEAR):
     F.write(make_asplos("asplos",y,occ))
     occ = occ +1
 
