@@ -341,7 +341,7 @@ for y in range(2016,2018):
 
 
 annual_occ("hpca",1,1995,2019)
-annual_occ("micro",1,1968,2020)
+annual_occ("micro",1,1968,MAXYEAR)
 
 
 

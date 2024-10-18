@@ -136,6 +136,7 @@ COMMANDSUB = {
      "\\new{" : "SELF",
      "\\system{": "SYSTEM",
      #paper-specific
+     "\\td{" : "TD"
 }
 
 KEYWORDSUB = {
