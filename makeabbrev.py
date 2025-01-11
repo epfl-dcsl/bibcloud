@@ -143,7 +143,10 @@ CONF = {
     "uic" : ['y',"Proceedings of the YEAR {IEEE} SmartWorld, Ubiquitous Intelligence {\&} Computing, Advanced {\&} Trusted Computing, Scalable Computing {\&} Communications, Internet of People and Smart City Innovation"],
     "SmartWorld/SCALCOM/UIC/ATC/IOP/SCI" : ['y',"Proceedings of the YEAR {IEEE} SmartWorld, Ubiquitous Intelligence {\&} Computing, Advanced {\&} Trusted Computing, Scalable Computing {\&} Communications, Internet of People and Smart City Innovation"],
     "sp" : ['o',"Proceedings of the OCCURENCE IEEE Symposium on Security and Privacy (S{\&}P)"],
-    "cf" : ['o', "Proceedings of the OCCURENCE ACM International Conference on Computing Frontiers (CF)"]
+    "cf" : ['o', "Proceedings of the OCCURENCE ACM International Conference on Computing Frontiers (CF)"],
+    "fmcad" : ['y',"Proceedings of the YEAR Formal Methods in Computer-Aided Design Conferenc (FMCAD)"],
+    "kisv@sosp" : ['o',"Proceedings of the OCCURENCE Workshop on Kernel Isolation, Safety and Verification (KISV)"],
+    "onward!" : ['y',"Proceedings of the YEAR ACM SIGPLAN International Symposium on New Ideas, New Paradigms, and Reflections on Programming and Software (Onward!)"]
 
 }
 
@@ -487,9 +490,18 @@ annual_year("ISPA/BDCloud/SocialCom/SustainCom",2021,2022)
 annual_occ("mlsys",1,2018,MAXYEAR)
 annual_occ("sp",30,2009,MAXYEAR)
 annual_occ("cf",20,2023,2024)
+
+
+annual_year("fmcad",2016,2017)
+annual_occ("kisv@sosp",2,2024,2025)
+annual_year("onward!",2013,2014)
+
+
 # hacks
 
 annual_year("uic",2021,2022)
 annual_year("SmartWorld/SCALCOM/UIC/ATC/IOP/SCI",2021,2022)
+
+
 
 F.close()
