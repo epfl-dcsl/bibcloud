@@ -146,7 +146,9 @@ CONF = {
     "cf" : ['o', "Proceedings of the OCCURENCE ACM International Conference on Computing Frontiers (CF)"],
     "fmcad" : ['y',"Proceedings of the YEAR Formal Methods in Computer-Aided Design Conferenc (FMCAD)"],
     "kisv@sosp" : ['o',"Proceedings of the OCCURENCE Workshop on Kernel Isolation, Safety and Verification (KISV)"],
-    "onward!" : ['y',"Proceedings of the YEAR ACM SIGPLAN International Symposium on New Ideas, New Paradigms, and Reflections on Programming and Software (Onward!)"]
+    "onward!" : ['y',"Proceedings of the YEAR ACM SIGPLAN International Symposium on New Ideas, New Paradigms, and Reflections on Programming and Software (Onward!)"],
+    "fm" : ['o',"Proceedings of the OCCURENCE International Symposium on Formal Methods (FM)" ],
+    "vstte" : ['o',"Proceedings of the OCCURENCE International Conference on Verified Software, Theories, Tools and Experiments (VSTTE)" ]
 
 }
 
@@ -384,7 +386,7 @@ annual_occ("ipdps",24,2010,2021)
 annual_occ("icde",31,2015,2017)
 annual_occ("hotdep",2,2006,2016)
 annual_occ("dsn",36,2006,MAXYEAR)
-annual_occ("vee",1,2005,2016)
+annual_occ("vee",1,2005,2022)  # VEE stops in 2021
 annual_occ("wmcsa",4,2002,2004)
 annual_occ("iccd",23,2005,2015)
 
@@ -495,7 +497,8 @@ annual_occ("cf",20,2023,2024)
 annual_year("fmcad",2016,2017)
 annual_occ("kisv@sosp",2,2024,2025)
 annual_year("onward!",2013,2014)
-
+annual_occ("fm",16,2009,2010)
+annual_occ("vstte",3,2010,2011)
 
 # hacks
 
