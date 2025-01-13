@@ -328,8 +328,8 @@ for occ in range (1,30):
     y = 1994 + occ
     F.write(make_sigcomm("usenix",y))
 
-for y in range (1990,2018): 
-    F.write(make_sigcomm("pldi",y))
+annual_year("pldi",1990,MAXYEAR)
+
 
 
 for y in range(2006,MAXYEAR):
