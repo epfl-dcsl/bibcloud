@@ -499,7 +499,7 @@ annual_occ("cf",20,2023,2024)
 
 
 annual_year("fmcad",2016,2017)
-annual_occ("kisv@sosp",2,2024,MAXYEAR)
+annual_occ("kisv@sosp",1,2023,MAXYEAR)
 annual_year("onward!",2013,2014)
 annual_occ("vstte",3,2010,2011)
 
