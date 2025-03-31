@@ -12,7 +12,7 @@ global F
 #last year should normally be current year + 1
 #use it as the end of range only for conferences that are assumed to happen annually going forward
 
-MAXYEAR  = 2025
+MAXYEAR  = 2026
 
 OCCURENCE_TABLE = [
     "th","st","nd","rd","th","th","th","th","th","th","th"
@@ -148,8 +148,11 @@ CONF = {
     "kisv@sosp" : ['o',"Proceedings of the OCCURENCE Workshop on Kernel Isolation, Safety and Verification (KISV)"],
     "onward!" : ['y',"Proceedings of the YEAR ACM SIGPLAN International Symposium on New Ideas, New Paradigms, and Reflections on Programming and Software (Onward!)"],
     "fm" : ['o',"Proceedings of the OCCURENCE International Symposium on Formal Methods (FM)" ],
-    "vstte" : ['o',"Proceedings of the OCCURENCE International Conference on Verified Software, Theories, Tools and Experiments (VSTTE)" ]
-
+    "vstte" : ['o',"Proceedings of the OCCURENCE International Conference on Verified Software, Theories, Tools and Experiments (VSTTE)" ],
+    "fme" : ['y',"Proceedings of the YEAR International Symposium on Formal Methods Europe" ],
+    "fm-trends" : ['y',"Proceeedings of the International Workshop on Current Trends in Applied Formal Method"],
+    "cic" : ['o','Proceeedings of OCCURENCE IEEE International Conference on Collaboration and Internet Computing (CIC)'] 
+                  
 }
 
 SHORTCONF = {
@@ -471,6 +474,7 @@ annual_occ("opodis",10,2006,MAXYEAR)
 annual_occ("icse",2,1976,1977)
 annual_year("asiaccs",2017,MAXYEAR)
 annual_occ("dimva",12,2015,MAXYEAR)
+annual_occ("cic",1,2015,MAXYEAR)
 
 #crazy ones:
 annual_year("iwmm",1992,1996)
@@ -495,10 +499,14 @@ annual_occ("cf",20,2023,2024)
 
 
 annual_year("fmcad",2016,2017)
-annual_occ("kisv@sosp",2,2024,2025)
+annual_occ("kisv@sosp",2,2024,MAXYEAR)
 annual_year("onward!",2013,2014)
-annual_occ("fm",16,2009,2010)
 annual_occ("vstte",3,2010,2011)
+
+#fm has holes in 2007 and before - beware; in general `fm` was not formally declined for years`
+annual_occ("fm",15,2008,2010)
+annual_year("fme",2001,2002)
+annual_year("fm-trends",1998,1999)
 
 # hacks
 
