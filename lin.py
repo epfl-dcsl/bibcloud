@@ -136,7 +136,10 @@ COMMANDSUB = {
      "\\new{" : "SELF",
      "\\system{": "SYSTEM",
      #paper-specific
-     "\\td{" : "TD"
+     "\\td{" : "TD",
+     "\\framework{" : "FRAMEWORK",
+     "\\sharedmem{" : "regular memory"
+
 }
 
 KEYWORDSUB = {

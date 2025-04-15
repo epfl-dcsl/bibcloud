@@ -151,8 +151,11 @@ CONF = {
     "vstte" : ['o',"Proceedings of the OCCURENCE International Conference on Verified Software, Theories, Tools and Experiments (VSTTE)" ],
     "fme" : ['y',"Proceedings of the YEAR International Symposium on Formal Methods Europe" ],
     "fm-trends" : ['y',"Proceeedings of the International Workshop on Current Trends in Applied Formal Method"],
-    "cic" : ['o','Proceeedings of OCCURENCE IEEE International Conference on Collaboration and Internet Computing (CIC)'] 
-                  
+    "cic" : ['o','Proceeedings of OCCURENCE IEEE International Conference on Collaboration and Internet Computing (CIC)'],
+    "disc" : ['o', 'Proceeedings of OCCURENCE International Symposium on Distributed Computing (DISC)'],
+    "ipps/spdp" : ['o','Proceeedings of OCCURENCE Symposium on Parallel and Distributed Processing (SPDP)'],
+    "tacas" : ['o','Proceeedings of OCCURENCE International Conference on Tools and Algorithms for Construction and Analysis of Systems (TACAS)']
+
 }
 
 SHORTCONF = {
@@ -273,10 +276,12 @@ for y in range(1993,2017):
     F.write(make_sigcomm("sigmetrics",y))
 
 
-for occ in range (1,32):
+# SOSP goes annual in 2024
+for occ in range (1,30):
     y = 1967 + (occ-1)*2
     F.write(make_sosp("sosp",y,occ))
 
+annual_occ("sosp",30,2024,MAXYEAR)
 
 F.write(make_sosp("osdi",1996,2))
 F.write(make_sosp("osdi",1999,3))
@@ -475,6 +480,7 @@ annual_occ("icse",2,1976,1977)
 annual_year("asiaccs",2017,MAXYEAR)
 annual_occ("dimva",12,2015,MAXYEAR)
 annual_occ("cic",1,2015,MAXYEAR)
+annual_occ("tacas",14,2008,MAXYEAR)
 
 #crazy ones:
 annual_year("iwmm",1992,1996)
@@ -502,6 +508,8 @@ annual_year("fmcad",2016,2017)
 annual_occ("kisv@sosp",1,2023,MAXYEAR)
 annual_year("onward!",2013,2014)
 annual_occ("vstte",3,2010,2011)
+annual_occ("disc",22,2008,MAXYEAR)
+annual_occ("ipps/spdp",9,1998,1999) # weird one, colocated with other conf
 
 #fm has holes in 2007 and before - beware; in general `fm` was not formally declined for years`
 annual_occ("fm",15,2008,2010)
