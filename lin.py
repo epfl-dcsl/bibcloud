@@ -198,6 +198,7 @@ def ppword(l):
             x = l.find(c)
             if x>=0:
                 inbody = 1
+                print("ALL CUSOTOM MACROS:"+str(CUSTOMMACROS))
                 return ppword(l)
         return ""
 

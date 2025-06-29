@@ -141,7 +141,7 @@ NOACKCONFERENCE = {
 }
 
 
-WORKSHOPS = ["HotOS","KBNets@SIGCOMM","APNet"]
+WORKSHOPS = ["HotOS","KBNets@SIGCOMM","APNet","KISV@SOSP"]
 
 ############
 ### globals
@@ -161,11 +161,13 @@ def find_citation(l):
         z = l.find("}",y)
         return l[y+1:z]
         
+    # biber generates a mess
     x = l.find("\\abx@aux@cite{")
     if (x>=0):
-        y = l.find("{")
-        z = l.find("}",y)
-        return l[y+1:z]
+        #hack - skip {0}{
+        y = x + len("\\abx@aux@cite{0}{")
+        z = l[y:].find("}")
+        return l[y:y+z]
     
     return ""
 

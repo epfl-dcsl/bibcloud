@@ -242,7 +242,12 @@ def annual_year(k,first_y,end_y):
     for y in range(first_y,end_y):
         F.write(make_sigcomm(k,y))
     
-
+def annual_asplos(k,first_occ,first_y,end_y):
+    occ = first_occ
+    for y in range(first_y,end_y):
+        F.write(make_asplos(k,y,occ))
+        occ = occ +1
+ 
     
 ###################################################
 # main
@@ -314,9 +319,7 @@ for occ in range (6,21):
     y = 1997 + (occ-6)*2
     F.write(make_asplos("hotos",y,occ))
 
-for occ in range (6,20):
-    y = 2007 + (occ-6)
-    F.write(make_asplos("hotnets",y,occ))
+annual_asplos("hotnets",6,2007,MAXYEAR)
 
 
 for y in range (1993,2018):
@@ -420,7 +423,7 @@ annual_occ("lisa",10,1996,2016)
 annual_occ("pact",6,1997,2018)
 annual_occ("sigcse",36,2005,2006)
 
-annual_year("ispass",2000,2017)
+annual_year("ispass",2000,MAXYEAR)
 annual_occ("fpl",11,2001,2017)    #was a workshop earlier
 annual_occ("threepgcic",5,2010,2017)
 annual_occ("mobicom",6,2000,2017)
