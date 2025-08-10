@@ -335,10 +335,7 @@ for occ in range (1,10):
     y = 2005 + occ
     F.write(make_sigcomm("icpp",y))
 
-for occ in range (1,30):
-    y = 1994 + occ
-    F.write(make_sigcomm("usenix",y))
-
+annual_year("usenix",1995,MAXYEAR)
 annual_year("pldi",1990,MAXYEAR)
 
 
