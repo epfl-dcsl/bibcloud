@@ -154,8 +154,8 @@ CONF = {
     "cic" : ['o','Proceeedings of OCCURENCE IEEE International Conference on Collaboration and Internet Computing (CIC)'],
     "disc" : ['o', 'Proceeedings of OCCURENCE International Symposium on Distributed Computing (DISC)'],
     "ipps/spdp" : ['o','Proceeedings of OCCURENCE Symposium on Parallel and Distributed Processing (SPDP)'],
-    "tacas" : ['o','Proceeedings of OCCURENCE International Conference on Tools and Algorithms for Construction and Analysis of Systems (TACAS)']
-
+    "tacas" : ['o','Proceeedings of OCCURENCE International Conference on Tools and Algorithms for Construction and Analysis of Systems (TACAS)'],
+    "sesame@eurosys" : ['o','Proceedings of OCCURENCE Workshop on SErverless Systems, Applications and MEthodologies (SESAME)']
 }
 
 SHORTCONF = {
@@ -510,6 +510,7 @@ annual_year("onward!",2013,2014)
 annual_occ("vstte",3,2010,2011)
 annual_occ("disc",22,2008,MAXYEAR)
 annual_occ("ipps/spdp",9,1998,1999) # weird one, colocated with other conf
+annual_occ("sesame@eurosys",1,2023,2026)
 
 #fm has holes in 2007 and before - beware; in general `fm` was not formally declined for years`
 annual_occ("fm",15,2008,2010)

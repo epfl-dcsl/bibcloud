@@ -141,7 +141,7 @@ NOACKCONFERENCE = {
 }
 
 
-WORKSHOPS = ["HotOS","KBNets@SIGCOMM","APNet","KISV@SOSP"]
+WORKSHOPS = ["HotOS","KBNets@SIGCOMM","APNet","KISV@SOSP","SESAME@EuroSys"]
 
 ############
 ### globals
@@ -254,15 +254,25 @@ def update_dblp(citations,latex_backmap):
                 if num_children == 0:
                     tree = ET.parse(".bibcloud/tmp.xml")
                     root = tree.getroot()
+                    if root.tag == "body":  
+                        print("bibclould -- DBLP rejected request; see .bibcould/tmp.xml (1)")
+                        os.exit(1) 
+
                 else:
                     newtree = ET.parse(".bibcloud/tmp.xml")
-                    root.insert(num_children,newtree.getroot()[0])
+                    newroot = newtree.getroot()[0]
+                    if newroot.tag == "body":  
+                        print("bibclould -- DBLP rejected request; see .bibcould/tmp.xml (2)")
+                        os.exit(1)
+
+                    root.insert(num_children,newroot)
                 num_children = num_children + 1
                 print("Updating cache ...")
                 tree.write(".bibcloud/DBLP.xml")
             except:
                 os.system("mv .bibcloud/tmp.xml .bibcloud/error.xml")
                 print("ERROR in XML parsing ... see file ./bibcloud/error.xml")
+                os._exit(1)
         else:
                 print("FETCH of ",key," failed...")
         time.sleep(2)
