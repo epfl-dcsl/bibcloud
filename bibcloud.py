@@ -275,7 +275,7 @@ def update_dblp(citations,latex_backmap):
                 os._exit(1)
         else:
                 print("FETCH of ",key," failed...")
-        time.sleep(2)
+        time.sleep(4)
 
 
 ########## html_to_bibtex ######
