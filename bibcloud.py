@@ -136,7 +136,9 @@ NOACKCONFERENCE = {
     "Hot Interconnects": "hoti",
     "Workshop on Hot Topics in Operating Systems" :"hotos",
     "IEEE WISA": "IEEE WISA",
+    "ASPLOS (1)" : "ASPLOS",
     "ASPLOS (2)" : "ASPLOS",
+    "ASPLOS (3)" : "ASPLOS",
     "ASPLOS (4)": "ASPLOS",
     "USENIX ATC" : "USENIX"
 }
