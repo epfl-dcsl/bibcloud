@@ -136,9 +136,12 @@ COMMANDSUB = {
      "\\new{" : "SELF",
      "\\system{": "SYSTEM",
      #paper-specific
-     "\\td{" : "TD",
+     "\\td{" : "SD",
      "\\framework{" : "FRAMEWORK",
-     "\\sharedmem{" : "regular memory"
+     "\\sharedmem{" : "regular memory",
+     "\\FW{" : "platform firmware",
+     "\\SM{" : "security monitor"
+
 
 }
 
